@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import {useEffect, useState} from "react";
+import {Link, Route, Routes} from "react-router-dom";
+import Home from "./pages/Home/home";
+import RatingGroups from "./pages/Rate/RatingGroups/rating-groups";
 
 const App = () => {
-  const [data, setData] = useState(null);
+    return (
+        <>
+            <nav>
+                <ul>
+                    <li><Link to={'/'}>Home</Link></li>
+                    <li><Link to={'/rating-groups'}>Rating Groups</Link></li>
+                </ul>
+            </nav>
 
-  useEffect(() => {
-    fetch('http://movie-rating.test/api')
-        .then(res => res.json())
-        .then(data => setData(data));
-  }, []);
-
-  return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>Usuario: {data?.user} - Contraseña: {data?.password}</p>
-        </header>
-      </div>
-  );
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/rating-groups' element={<RatingGroups />} />
+            </Routes>
+        </>
+    )
 }
-
 
 export default App;
