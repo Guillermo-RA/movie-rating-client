@@ -1,6 +1,7 @@
 import {Link, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home/home";
-import RatingGroups from "./pages/Rate/RatingGroups/rating-groups";
+import RatingGroupsIndex from "./pages/Rate/RatingGroups/rating-groups-index";
+import RatingGroupShow from "./pages/Rate/RatingGroups/rating-group-show";
 
 const App = () => {
     return (
@@ -14,7 +15,9 @@ const App = () => {
 
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/rating-groups' element={<RatingGroups />} />
+                <Route path='/rating-groups' element={<RatingGroupsIndex />} />
+                <Route path='/rating-groups/:id' element={<RatingGroupShow />} />
+                <Route path='*' element={<h1>404 Not Found</h1>} />
             </Routes>
         </>
     )
