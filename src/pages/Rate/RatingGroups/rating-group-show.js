@@ -2,6 +2,7 @@ import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 const RatingGroupShow = () => {
+
     const [ratingGroup, setRatingGroup] = useState({});
     const [{error, error_message}, setError] = useState({});
     const {id} = useParams();
