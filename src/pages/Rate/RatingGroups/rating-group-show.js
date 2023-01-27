@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate, Link} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 const RatingGroupShow = () => {
@@ -6,6 +6,7 @@ const RatingGroupShow = () => {
     const [ratingGroup, setRatingGroup] = useState({});
     const [{error, error_message}, setError] = useState({});
     const {id} = useParams();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`http://movie-rating.test/api/v1/rating-groups/${id}`)
@@ -18,13 +19,13 @@ const RatingGroupShow = () => {
             });
     }, [id]);
 
-
     return (
         !error ?
             (
                 <>
-                    <h1>{ratingGroup.title}</h1>
-                    <h2>User: {ratingGroup.user?.name}</h2>
+                    <h2 className='page-title'>{ratingGroup.title}</h2>
+                    <h3 className='page-title'>User: {ratingGroup.user?.name}</h3>
+                    <Link className='page-link' to={''} onClick={() => navigate(-1)}>Volver</Link>
                 </>
             )
             : <h1>{error_message}</h1>

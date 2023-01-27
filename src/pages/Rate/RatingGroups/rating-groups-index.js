@@ -6,9 +6,9 @@ const RatingGroupsIndex = () => {
     const RatingGroups = (groups) => {
         return (
             <div className='rating_groups'>
-                <ul>
+                <ul className='list-no-decoration'>
                     {groups.map(({id, title}) => (
-                        <li key={id}><Link to={`/rating-groups/${id}`}>{title}</Link></li>
+                        <li key={id}><Link className='page-link' to={`/rating-groups/${id}`}>{title}</Link></li>
                     ))}
                 </ul>
             </div>
@@ -23,7 +23,7 @@ const RatingGroupsIndex = () => {
 
 return (
     <div>
-        <h1>RatingGroups</h1>
+        <h2 className='page-title'>RatingGroups</h2>
         {RatingGroups(ratingGroups || [])}
     </div>
 )
