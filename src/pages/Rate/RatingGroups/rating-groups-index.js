@@ -1,32 +1,19 @@
-import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import RatingGroupItem from "./rating-group-item";
+import {useFetchRatingGroups} from "../../../hooks/useFetchRatingGroups";
 
 const RatingGroupsIndex = () => {
-    const [ratingGroups, setRatingGroups] = useState(null);
-    const RatingGroups = (groups) => {
-        return (
-            <div className='rating_groups'>
-                <ul className='list-no-decoration'>
-                    {groups.map(({id, title}) => (
-                        <li key={id}><Link className='page-link' to={`/rating-groups/${id}`}>{title}</Link></li>
-                    ))}
-                </ul>
-            </div>
-        )
+const {ratingGroups, isFetching} = useFetchRatingGroups();
+
+    if (isFetching) {
+        return <h2 className='page-title'>Cargando...</h2>
     }
-    useEffect(() => {
-        fetch('http://movie-rating.test/api/v1/rating-groups')
-            .then(res => res.json())
-            .then(data => setRatingGroups(data));
-    }, []);
 
-
-return (
-    <div>
-        <h2 className='page-title'>RatingGroups</h2>
-        {RatingGroups(ratingGroups || [])}
-    </div>
-)
+    return (
+        <>
+            <h2 className='page-title'>RatingGroups</h2>
+            {RatingGroupItem(ratingGroups || [])}
+        </>
+    )
 }
 
 export default RatingGroupsIndex;

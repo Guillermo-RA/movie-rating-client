@@ -1,0 +1,22 @@
+// Import the various SASS variables
+@use 'colors' as c;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-inline: 3em;
+
+  .navbar-items {
+    padding-inline-start: 0;
+    width: fit-content;
+    display: inline-flex;
+    justify-content: space-between;
+    list-style: none;
+  }
+
+  .navbar-item {
+    margin-right: 2rem;
+  }
+}
