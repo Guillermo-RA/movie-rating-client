@@ -1,8 +1,14 @@
+// General CSS
 @use "../variables/colors" as c;
-@use "colors";
-@use 'inputs';
-@use 'navbar';
+@use "basic/colors";
+@use 'basic/inputs';
+@use 'basic/widths';
+@use 'basic/fonts';
+@use 'basic/padding-margin';
 
+// General Components CSS
+@use 'navbar';
+@use 'footer';
 
 body {
   margin: 0;
@@ -11,6 +17,8 @@ body {
   sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+  height: 100%;
 }
 
 code {
@@ -18,12 +26,21 @@ code {
   monospace;
 }
 
-.page-link {
+.app-container {
+  position: relative;
+}
+
+.main {
+  min-height: 100vh;
+  padding-inline: 4em;
+}
+
+.link {
   text-decoration: none;
 }
 
 
-.page-title {
+.title {
   text-align: center;
 }
 

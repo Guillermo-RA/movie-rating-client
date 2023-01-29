@@ -1,8 +1,10 @@
 // Import the various SASS variables
-@use 'colors' as c;
+@use 'basic/colors' as c;
 
 .header {
   display: flex;
+  position: sticky;
+  top: 0;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
@@ -16,7 +18,7 @@
     list-style: none;
   }
 
-  .navbar-item {
+  .navbar-item:not(.navbar-item:last-of-type) {
     margin-right: 2rem;
   }
 }

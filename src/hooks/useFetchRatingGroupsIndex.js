@@ -1,8 +1,8 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 
-const useFetchRatingGroups = () => {
-    const [ratingGroups, setRatingGroups] = useState({});
+const useFetchRatingGroupsIndex = () => {
+    const [ratingGroups, setRatingGroups] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {
@@ -11,8 +11,12 @@ const useFetchRatingGroups = () => {
             .then(({data}) => {
                 setRatingGroups(data)
             })
+            .catch(({response: {status}}) => {
+                if (status === 404)
+                    throw new Error('Server error. Try again later or contact this site administrator')
+            })
             .catch(e => {
-                console.error(e);
+                console.error(e)
             })
             .finally(() => {
                 setIsFetching(false);
@@ -22,4 +26,4 @@ const useFetchRatingGroups = () => {
     return {ratingGroups, isFetching}
 }
 
-export {useFetchRatingGroups};
+export {useFetchRatingGroupsIndex};

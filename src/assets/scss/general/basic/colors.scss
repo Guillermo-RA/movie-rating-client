@@ -1,9 +1,9 @@
-@use '../variables/colors' as c;
+@use '../../variables/colors' as c;
 
 $colorsList: (
         'black': c.$black,
         'white': c.$white,
-        'ligth-blue': c.$lightBlue,
+        'light-blue': c.$lightBlue,
         'medium-blue': c.$mediumBlue,
         'dark-blue': c.$darkBlue,
         'light-orange': c.$lightOrange,
@@ -16,7 +16,7 @@ $colorsList: (
 $bgColorsList: (
         'bg-black': c.$black,
         'bg-white': c.$white,
-        'bg-ligth-blue': c.$lightBlue,
+        'bg-light-blue': c.$lightBlue,
         'bg-medium-blue': c.$mediumBlue,
         'bg-dark-blue': c.$darkBlue,
         'bg-light-orange': c.$lightOrange,

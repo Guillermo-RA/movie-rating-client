@@ -1,35 +1,25 @@
-import {useParams, Link} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+// import {useEffect, useState} from "react";
+import {useFetchRatingGroupsShow} from "../../../hooks/useFetchRatingGroupsShow";
 
 const RatingGroupsShow = () => {
 
-    const [ratingGroup, setRatingGroup] = useState({});
-    const [{error, error_message}, setError] = useState({});
-    const {id} = useParams();
+    const {ratingGroup:{title, user }, isFetching, error, error_message} = useFetchRatingGroupsShow();
 
-    useEffect(() => {
-        fetch(`http://movie-rating.test/api/v1/rating-groups/${id}`)
-            .then(res => res.json())
-            .then(({data, error, error_message}) => {
-                if (!error)
-                    setRatingGroup(data)
-                else
-                    setError({error: error, error_message: error_message});
-            });
-    }, [id]);
-
-    return (
-        !error ?
-            (
-                <>
-                    <h2 className='page-title'>{ratingGroup.title}</h2>
-                    <h3 className='page-title'>User: {ratingGroup.user?.name}</h3>
-                    <p className='page-title'><Link className='page-link link-orange' to={'/rating-groups'}>Volver</Link></p>
-                </>
-            )
-            : <h1>{error_message}</h1>
-    )
-
+    if (isFetching) {
+        return <h2 className='title'>Cargando...</h2>
+    } else if (error) {
+        return <h2 className='title'>{error_message}</h2>
+    } else
+        return (
+            <>
+                <h2 className='title'>{title}</h2>
+                <h3 className='title'>User: {user.name}</h3>
+                <p className='title'>
+                    <Link className='link link-orange' to={'/rating-groups'}>Volver</Link>
+                </p>
+            </>
+        )
 }
 
 export default RatingGroupsShow
