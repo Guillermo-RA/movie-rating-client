@@ -1,0 +1,58 @@
+@use '../../variables/colors' as c;
+
+$colorsList: (
+        'black': c.$black,
+        'white': c.$white,
+        'light-blue': c.$lightBlue,
+        'medium-blue': c.$mediumBlue,
+        'dark-blue': c.$darkBlue,
+        'light-orange': c.$lightOrange,
+        'orange': c.$orange,
+        'dark-orange': c.$darkOrange,
+        'light-yellow': c.$lightYellow,
+        'yellow': c.$yellow,
+        'dark-yellow': c.$darkYellow,
+);
+$bgColorsList: (
+        'bg-black': c.$black,
+        'bg-white': c.$white,
+        'bg-light-blue': c.$lightBlue,
+        'bg-medium-blue': c.$mediumBlue,
+        'bg-dark-blue': c.$darkBlue,
+        'bg-light-orange': c.$lightOrange,
+        'bg-orange': c.$orange,
+        'bg-dark-orange': c.$darkOrange,
+        'bg-light-yellow': c.$lightOrange,
+        'bg-yellow': c.$yellow,
+        'bg-dark-yellow': c.$darkYellow,
+);
+
+// Color classes
+
+@each $name, $color in $colorsList {
+  .#{$name} {
+    color: #{$color};
+  }
+}
+
+// Background color classes
+
+@each $name, $color in $bgColorsList {
+  .#{$name} {
+    background-color: #{$color};
+  }
+}
+
+// Link colors
+
+
+@each $name, $color in $colorsList {
+  .link-#{$name} {
+    &, &:visited {
+      color: #{$color};
+    }
+    &:hover {
+      color: darken($color, 20%);
+    }
+  }
+}

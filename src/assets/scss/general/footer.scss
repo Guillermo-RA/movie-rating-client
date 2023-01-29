@@ -1,0 +1,23 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  padding: 1em;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  flex-direction: column;
+
+  .footer-items {
+    padding-inline-start: 0;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    list-style: none;
+  }
+
+  .footer-item:nth-child(1) {
+    margin-right: 2rem;
+  }
+}

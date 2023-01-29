@@ -1,0 +1,29 @@
+// Import the various SASS variables
+@use '../../variables/colors' as c;
+
+// CSS to improve visuals of inputs which you type in
+
+.input-type {
+  width: 100%;
+  max-width: 220px;
+  height: 45px;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1.5px solid c.$darkBlue;
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  box-shadow: 0 0 20px -18px;
+}
+
+.input-type:hover {
+  border: 2px solid c.$darkBlue;
+  box-shadow: 0 0 20px -17px;
+}
+
+.input-type:active {
+  transform: scale(0.95);
+}
+
+.input-type:focus {
+  border: 2px solid c.$mediumBlue;
+}

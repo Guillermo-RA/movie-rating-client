@@ -1,0 +1,51 @@
+// General CSS
+@use "../variables/colors" as c;
+@use "basic/colors";
+@use 'basic/inputs';
+@use 'basic/widths';
+@use 'basic/fonts';
+@use 'basic/padding-margin';
+
+// General Components CSS
+@use 'navbar';
+@use 'footer';
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: auto;
+  height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.app-container {
+  position: relative;
+}
+
+.main {
+  min-height: 100vh;
+  padding-inline: 4em;
+}
+
+.link {
+  text-decoration: none;
+}
+
+
+.title {
+  text-align: center;
+}
+
+.list-no-decoration {
+  list-style: none;
+}
+
+

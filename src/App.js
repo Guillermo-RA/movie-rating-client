@@ -1,22 +1,26 @@
-import {Link, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+import Header from "./components/Header/header";
 import Home from "./pages/Home/home";
-import RatingGroups from "./pages/Rate/RatingGroups/rating-groups";
+import RatingGroupsIndex from "./pages/Rate/RatingGroups/rating-groups-index";
+import RatingGroupsShow from "./pages/Rate/RatingGroups/rating-groups-show";
+import MoviesIndex from "./pages/Movies/movies-index";
+import Footer from "./components/Footer/footer";
 
 const App = () => {
     return (
-        <>
-            <nav>
-                <ul>
-                    <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/rating-groups'}>Rating Groups</Link></li>
-                </ul>
-            </nav>
-
-            <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/rating-groups' element={<RatingGroups />} />
-            </Routes>
-        </>
+        <div className='app-container'>
+            <Header />
+            <div className='main'>
+                <Routes>
+                    <Route path='/' element={<Home />} />
+                    <Route path='/rating-groups' element={<RatingGroupsIndex />} />
+                    <Route path='/rating-groups/:id' element={<RatingGroupsShow />} />
+                    <Route path='/movies' element={<MoviesIndex />} />
+                    <Route path='*' element={<h2 className='title'>404 Not Found</h2>} />
+                </Routes>
+            </div>
+            <Footer />
+        </div>
     )
 }
 

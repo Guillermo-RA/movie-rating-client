@@ -1,0 +1,102 @@
+// Margin auto
+.m-auto {
+  margin: auto;
+}
+
+// Margin all
+@for $i from 1 through 7 {
+  .m-#{$i} {
+    margin: #{$i}rem;
+  }
+}
+
+// Margin inline
+@for $i from 1 through 7 {
+  .mx-#{$i} {
+    margin-inline: #{$i}rem;
+  }
+}
+
+// Margin block
+@for $i from 1 through 7 {
+  .my-#{$i} {
+    margin-block: #{$i}rem;
+  }
+}
+
+// Margin bottom
+@for $i from 1 through 7 {
+  .mb-#{$i} {
+    margin-bottom: #{$i}rem;
+  }
+}
+
+// Margin right
+@for $i from 1 through 7 {
+  .mr-#{$i} {
+    margin-right: #{$i}rem;
+  }
+}
+
+// Margin left
+@for $i from 1 through 7 {
+  .ml-#{$i} {
+    margin-left: #{$i}rem;
+  }
+}
+
+// Padding all
+@for $i from 1 through 7 {
+  .p-#{$i} {
+    padding: #{$i}rem;
+  }
+}
+
+// Padding inline
+@for $i from 1 through 7 {
+  .px-#{$i} {
+    padding-inline: #{$i}rem;
+  }
+}
+
+// Padding block
+@for $i from 1 through 7 {
+  .py-#{$i} {
+    padding-block: #{$i}rem;
+  }
+}
+
+// Padding top
+@for $i from 1 through 7 {
+  .pt-#{$i} {
+    padding-top: #{$i}rem;
+  }
+}
+
+// Padding top
+@for $i from 1 through 7 {
+  .pt-#{$i} {
+    padding-top: #{$i}rem;
+  }
+}
+
+// Padding bottom
+@for $i from 1 through 7 {
+  .pb-#{$i} {
+    padding-bottom: #{$i}rem;
+  }
+}
+
+// Padding right
+@for $i from 1 through 7 {
+  .pr-#{$i} {
+    padding-right: #{$i}rem;
+  }
+}
+
+// Padding left
+@for $i from 1 through 7 {
+  .pl-#{$i} {
+    padding-left: #{$i}rem;
+  }
+}
