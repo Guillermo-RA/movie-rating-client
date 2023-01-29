@@ -3,7 +3,7 @@ import Header from "./components/Header/header";
 import Home from "./pages/Home/home";
 import RatingGroupsIndex from "./pages/Rate/RatingGroups/rating-groups-index";
 import RatingGroupsShow from "./pages/Rate/RatingGroups/rating-groups-show";
-import MoviesIndex from "./pages/Movies/movies.index";
+import MoviesIndex from "./pages/Movies/movies-index";
 import Footer from "./components/Footer/footer";
 
 const App = () => {
