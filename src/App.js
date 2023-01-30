@@ -8,19 +8,21 @@ import Footer from "./components/Footer/footer";
 
 const App = () => {
     return (
-        <div className='app-container'>
-            <Header />
-            <div className='main'>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/rating-groups' element={<RatingGroupsIndex />} />
-                    <Route path='/rating-groups/:id' element={<RatingGroupsShow />} />
-                    <Route path='/movies' element={<MoviesIndex />} />
-                    <Route path='*' element={<h2 className='title'>404 Not Found</h2>} />
-                </Routes>
+            <div className='app-container'>
+                <Header/>
+                <div className='main'>
+                    <Routes>
+                        <Route path='/' element={<Home/>}/>
+                        <Route path='/rating-groups' element={
+                            <RatingGroupsIndex />
+                        }/>
+                        <Route path='/rating-groups/:id' element={<RatingGroupsShow/>}/>
+                        <Route path='/movies' element={<MoviesIndex/>}/>
+                        <Route path='*' element={<h2 className='title'>404 Not Found</h2>}/>
+                    </Routes>
+                </div>
+                <Footer/>
             </div>
-            <Footer />
-        </div>
     )
 }
 

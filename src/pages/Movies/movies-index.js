@@ -1,5 +1,4 @@
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
-console.log(API_KEY)
 const MoviesIndex = () => {
     return (<>
             <h2 className='title'>Movies</h2>

@@ -1,17 +1,26 @@
 import RatingGroupItem from "./rating-group-item";
-import {useFetchRatingGroupsIndex} from "../../../hooks/useFetchRatingGroupsIndex";
+import {useFetchData} from "../../../hooks/useFetchData";
+import {useContext} from "react";
+import {ApiDataProvider} from "../../../context/ApiDataProvider";
 
 const RatingGroupsIndex = () => {
-const {ratingGroups, isFetching} = useFetchRatingGroupsIndex();
+    const {restApiUrl} = useContext(ApiDataProvider);
+    const {data:groups, isFetching} = useFetchData(`${restApiUrl}/rating-groups`);
 
     if (isFetching) {
-        return <h2 className='title'>Cargando...</h2>
+        return <div className='title h2'>Cargando...</div>
     }
 
     return (
         <>
             <h2 className='title'>Rating Groups</h2>
-            <RatingGroupItem groups={ratingGroups || [] } />
+            <div className='rating_groups'>
+                <ul className='list-no-decoration'>
+                    {groups.map(group => {
+                        return <RatingGroupItem key={group.id} group={group}/>
+                    })}
+                </ul>
+            </div>
         </>
     )
 }

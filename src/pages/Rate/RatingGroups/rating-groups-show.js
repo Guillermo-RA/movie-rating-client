@@ -1,15 +1,16 @@
 import {Link} from "react-router-dom";
-// import {useEffect, useState} from "react";
-import {useFetchRatingGroupsShow} from "../../../hooks/useFetchRatingGroupsShow";
+import {useContext} from "react";
+import {ApiDataProvider} from "../../../context/ApiDataProvider";
+import {useFetchDataById} from "../../../hooks/useFetchData";
 
 const RatingGroupsShow = () => {
-
-    const {ratingGroup:{title, user }, isFetching, error, error_message} = useFetchRatingGroupsShow();
+    const {restApiUrl} = useContext(ApiDataProvider);
+    const {data:{title, user }, isFetching, error, error_message} = useFetchDataById(`${restApiUrl}/rating-groups`);
 
     if (isFetching) {
-        return <h2 className='title'>Cargando...</h2>
+        return <div className='title h2'>Cargando...</div>
     } else if (error) {
-        return <h2 className='title'>{error_message}</h2>
+        return <div className='title h2'>{error_message}</div>
     } else
         return (
             <>

@@ -1,0 +1,81 @@
+@use '../variables/colors' as c;
+
+// Movie cards container
+
+.movie-cards-container {
+  padding: 3em;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  column-gap: 0.5em;
+  row-gap: 1.5em;
+  justify-content: space-evenly;
+}
+
+// Movie card
+
+.movie-card {
+  background-color: transparent;
+  width: 133px;
+  height: 177.8px;
+  perspective: 1000px;
+  font-family: sans-serif;
+
+  &:hover .movie-card-inner {
+    transform: rotateY(180deg);
+  }
+
+}
+
+.movie-card-title {
+  display: none;
+  position: absolute;
+  font-size: 1.1em;
+  font-weight: 900;
+  text-align: center;
+  margin: 0;
+}
+
+.movie-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.movie-card-front, .movie-card-back {
+  box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  border: 1px solid darken(c.$darkOrange, 20%);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.movie-card-front {
+  background: linear-gradient(120deg, lighten(c.$lightOrange, 10%) 60%, lighten(c.$lightOrange, 30%) 88%,
+          c.$lightOrange 40%, c.$orange 48%);
+  color: darken(c.$darkBlue, 2%);
+}
+
+.movie-card-back {
+  background: linear-gradient(120deg, c.$lightOrange 30%, c.$orange 88%,
+          lighten(c.$lightOrange, 15%) 40%, lighten(c.$lightOrange, 5%) 78%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.movie-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+}
