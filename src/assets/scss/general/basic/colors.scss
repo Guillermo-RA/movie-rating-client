@@ -4,7 +4,7 @@ $colorsList: (
         'black': c.$black,
         'white': c.$white,
         'light-blue': c.$lightBlue,
-        'medium-blue': c.$mediumBlue,
+        'blue': c.$mediumBlue,
         'dark-blue': c.$darkBlue,
         'light-orange': c.$lightOrange,
         'orange': c.$orange,
@@ -12,19 +12,6 @@ $colorsList: (
         'light-yellow': c.$lightYellow,
         'yellow': c.$yellow,
         'dark-yellow': c.$darkYellow,
-);
-$bgColorsList: (
-        'bg-black': c.$black,
-        'bg-white': c.$white,
-        'bg-light-blue': c.$lightBlue,
-        'bg-medium-blue': c.$mediumBlue,
-        'bg-dark-blue': c.$darkBlue,
-        'bg-light-orange': c.$lightOrange,
-        'bg-orange': c.$orange,
-        'bg-dark-orange': c.$darkOrange,
-        'bg-light-yellow': c.$lightOrange,
-        'bg-yellow': c.$yellow,
-        'bg-dark-yellow': c.$darkYellow,
 );
 
 // Color classes
@@ -37,8 +24,8 @@ $bgColorsList: (
 
 // Background color classes
 
-@each $name, $color in $bgColorsList {
-  .#{$name} {
+@each $name, $color in $colorsList {
+  .bg-#{$name} {
     background-color: #{$color};
   }
 }

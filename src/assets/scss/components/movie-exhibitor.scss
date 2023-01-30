@@ -27,13 +27,31 @@
 }
 
 .movie-card-title {
-  display: none;
-  position: absolute;
+  z-index: 2;
+  left: 0;
+  right: 0;
   font-size: 1.1em;
+  padding: 0.4em;
   font-weight: 900;
-  text-align: center;
   margin: 0;
 }
+
+.movie-card-subtitle {
+  z-index: 2;
+  font-size: 0.9rem;
+  padding: 0.5em;
+  font-weight: 900;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+  & > span {
+    margin-left: 0.5em;
+  }
+}
+
 
 .movie-card-inner {
   position: relative;
@@ -69,13 +87,22 @@
 .movie-card-back {
   background: linear-gradient(120deg, c.$lightOrange 30%, c.$orange 88%,
           lighten(c.$lightOrange, 15%) 40%, lighten(c.$lightOrange, 5%) 78%);
-  color: white;
+  color: c.$white;
   transform: rotateY(180deg);
+
+  .movie-card-image {
+    opacity: 1;
+    filter: blur(4px) brightness(50%);
+    transform: scaleX(-1);
+    border-radius: 1rem;
+  }
 }
 
 .movie-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
+  position: absolute;
+  top: 0;
+  left: 0;
 }

@@ -8,7 +8,7 @@ const KnowAbout = () => {
                 Podrás ver distintos gráficos que muestren información sobre las películas y notas que hayas puesto,
                 hacer tuits automáticos
                 con las películas que acabes de ver...<br/>
-                <span className='medium-blue fw-500'>¡Y mucho más!</span>
+                <span className='blue fw-500'>¡Y mucho más!</span>
             </div>
         </div>
     )

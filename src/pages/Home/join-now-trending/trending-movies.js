@@ -13,7 +13,7 @@ const TrendingMovies = () => {
     }
     return (
         <>
-            <span className='h2'>Películas populares esta semana</span>
+            <span className='h2 blue'>Películas populares esta semana</span>
             <div className='movie-cards-container'>
                 <MovieExhibitor movies={results.slice(0, 8)}/>
             </div>
