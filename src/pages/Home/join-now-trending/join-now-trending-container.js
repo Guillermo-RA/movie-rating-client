@@ -1,4 +1,4 @@
-import TrendingMovies from "./trending-movies";
+import TrendingMedia from "./trending-media";
 import JoinNow from "./join-now";
 
 const JoinNowTrendingContainer = () => {
@@ -7,8 +7,13 @@ const JoinNowTrendingContainer = () => {
             <div className='join-now'>
                 <JoinNow/>
             </div>
-            <div className='trending-movies'>
-                <TrendingMovies/>
+            <div className='trending-media'>
+                <div className='trending-movies'>
+                    <TrendingMedia title='Películas populares esta semana' mediaType='movie'/>
+                </div>
+                <div className='trending-shows'>
+                    <TrendingMedia title='Series populares esta semana' colorTitle='yellow' mediaType='tv'/>
+                </div>
             </div>
         </div>
     )
