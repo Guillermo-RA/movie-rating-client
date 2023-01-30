@@ -1,6 +1,7 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import setErrorMessages from "../helpers/error-messages";
 
 const useFetchData = (url, apiKey) => {
     const [data, setData] = useState([]);
@@ -12,13 +13,13 @@ const useFetchData = (url, apiKey) => {
             .then(({data}) => {
                 setData(data)
             })
-            .catch(({response: {status}}) => {
-                if (status === 404)
-                    throw new Error('Server error. Try again later or contact this site administrator')
+            .catch(({code}) => {
+                throw new Error(setErrorMessages(code));
             })
-            .catch(e => {
-                console.error(e)
-            })
+            .catch(errorMessage => {
+                    console.error(errorMessage)
+                }
+            )
             .finally(() => {
                 setIsFetching(false);
             });
@@ -42,12 +43,10 @@ const useFetchDataById = (url, apiKey) => {
                 else
                     setData(data.data)
             })
-            .catch(({response: {data: {error, error_message}, status}}) => {
+            .catch(({response: {data: {error, error_message}}, code}) => {
                 setError({error, error_message});
 
-                if (status === 404) {
-                    throw new Error(error_message)
-                }
+                throw new Error(setErrorMessages(code));
 
             })
             .catch((err) => {

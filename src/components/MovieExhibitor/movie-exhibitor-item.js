@@ -19,7 +19,7 @@ const MovieExhibitorItem = ({
     const averageVote = Math.round((vote_average + Number.EPSILON) * 100) / 100;
     return (
         <Link to={`/movies/${id}`}>
-            <div className="movie-card">
+            <div className="movie-card" title='Puntúala ya'>
                 <div className="movie-card-inner">
                     <div className="movie-card-front">
                         <div className='w-100'>
