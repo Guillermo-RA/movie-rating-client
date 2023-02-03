@@ -1,0 +1,33 @@
+.home-container {
+}
+
+.know-about {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  padding-bottom: 1.2em;
+  text-align: center;
+
+  .know-about-text {
+    font-size: 1.25rem;
+    padding-inline: 0.5rem
+  }
+}
+
+.join-trending-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+
+  .trending-movies, .trending-shows {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &, .join-now {
+      text-align: center;
+    }
+  }
+}

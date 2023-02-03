@@ -1,5 +1,5 @@
 // Import the various SASS variables
-@use 'basic/colors' as c;
+@use '../variables/colors' as c;
 
 .header {
   display: flex;
@@ -17,9 +17,53 @@
     display: inline-flex;
     justify-content: space-between;
     list-style: none;
+
+    .navbar-item:not(.navbar-item:last-of-type) {
+      margin-right: 2rem;
+    }
   }
 
-  .navbar-item:not(.navbar-item:last-of-type) {
-    margin-right: 2rem;
+}
+
+.languages-container {
+  width: fit-content;
+
+  .languages-button:hover {
+    filter: brightness(112%);
+  }
+
+  .languages-options {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: 1rem;
+    top: 3.3rem;
+    background-color: c.$white;
+    border-radius: 0.3rem;
+    box-shadow: transparentize(c.$darkBlue, 0.6) 2px 0 5px 2px;
+
+    .language-item {
+      display: grid;
+      grid-template-columns: .6fr .6fr;
+      align-items: center;
+      user-select: none;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+
+      &:hover {
+        filter: brightness(112%);
+        background-color: darken(c.$white, 30%);
+      }
+
+      &:first-of-type {
+        border-top-left-radius: 0.3rem;
+        border-top-right-radius: 0.3rem;
+      }
+      &:last-of-type {
+        border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+      }
+    }
   }
 }
+

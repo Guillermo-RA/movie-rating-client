@@ -1,7 +1,7 @@
 import {Link} from "react-router-dom";
 import {useContext} from "react";
 import {ApiDataProvider} from "../../../context/ApiDataProvider";
-import {useFetchDataById} from "../../../hooks/useFetchData";
+import {useFetchDataById} from "../../../hooks/personalized-hooks";
 
 const RatingGroupsShow = () => {
     const {restApiUrl} = useContext(ApiDataProvider);

@@ -4,37 +4,31 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {I18nextProvider} from "react-i18next";
-import i18next from "i18next";
-
-import home_es from "./locales/es/pages/home.json";
-import home_en from "./locales/en/pages/home.json";
+import __ from "i18next";
 
 import './assets/scss/general/index.scss';
+import {languageResources as resources} from "./helpers/language-resources";
 
-i18next.init({
+__.init({
+    lng: JSON.parse(localStorage.getItem('language'))?.code || 'es',
     fallbackLng: "es",
-    debug:true,
+    debug: true,
     interpolation: {
         escapeValue: false
     },
-    resources: {
-        es: {
-            home: home_es
-        },
-        en: {
-            home: home_en
-        }
-    }
+    resources,
 });
 
 const root = createRoot(document.getElementById('root'));
 
 root.render(
-    < I18nextProvider i18n={i18next}>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </I18nextProvider>
+    <React.StrictMode>
+        < I18nextProvider i18n={__}>
+            <BrowserRouter>
+                <App/>
+            </BrowserRouter>
+        </I18nextProvider>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

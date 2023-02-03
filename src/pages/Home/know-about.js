@@ -1,6 +1,8 @@
-import {useTranslation} from "react-i18next";
+import {useContext} from "react";
+import {TranslatorProvider} from "../../context/TranslatorProvider";
+
 const KnowAbout = () => {
-const {t: __} = useTranslation('home');
+    const {t: __} = useContext(TranslatorProvider);
     return (
         <div className='know-about'>
             <h2 className='title yellow fs-2em'>{__('know-about.title')}</h2>
