@@ -27,3 +27,12 @@
 .input-type:focus {
   border: 2px solid c.$mediumBlue;
 }
+
+.button {
+  background: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

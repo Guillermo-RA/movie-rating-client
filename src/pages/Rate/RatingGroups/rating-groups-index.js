@@ -1,7 +1,7 @@
 import RatingGroupItem from "./rating-group-item";
-import {useFetchData} from "../../../hooks/useFetchData";
 import {useContext} from "react";
 import {ApiDataProvider} from "../../../context/ApiDataProvider";
+import {useFetchData} from "../../../hooks/personalized-hooks";
 
 const RatingGroupsIndex = () => {
     const {restApiUrl} = useContext(ApiDataProvider);

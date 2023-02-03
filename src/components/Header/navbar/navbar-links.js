@@ -1,15 +1,15 @@
 const navbarLinks = [
     {
-        name: 'Home',
+        name: 'home',
         url: '/'
     },
     {
-        name: 'Rating Groups',
+        name: 'rating-groups',
         url: '/rating-groups'
     },
     {
-        name: 'Movies',
-        url: '/movies'
+        name: 'content',
+        url: '/content'
     }
 ];
 

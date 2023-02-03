@@ -2,14 +2,15 @@ import axios from "axios";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import setErrorMessages from "../helpers/error-messages";
+import {availableLanguages} from "../components/Header/languages/available-languages";
 
-const useFetchData = (url, apiKey) => {
+const useFetchData = (url, apiKey, {language}) => {
     const [data, setData] = useState([]);
     const [isFetching, setIsFetching] = useState(true);
 
     useEffect(() => {
         axios
-            .get(url, {params: {api_key: apiKey}})
+            .get(url, {params: {api_key: apiKey, language: language}})
             .then(({data}) => {
                 setData(data)
             })
@@ -23,7 +24,7 @@ const useFetchData = (url, apiKey) => {
             .finally(() => {
                 setIsFetching(false);
             });
-    }, [url, apiKey]);
+    }, [url, apiKey, language]);
 
     return {data, isFetching}
 }
@@ -60,4 +61,28 @@ const useFetchDataById = (url, apiKey) => {
     return {data, isFetching, error, error_message}
 }
 
-export {useFetchData, useFetchDataById};
+const useGetLanguage = () => {
+    const storage = localStorage.getItem('language');
+
+    return storage ? JSON.parse(storage) : availableLanguages[0];
+}
+
+const useHandleClickLanguages = (setDropdown, dropdown) => {
+    useEffect(() => {
+        const closeDropdown = (e) => {
+            const target = e.target.classList;
+
+            if (!target.contains('languages-options') && !target.contains('list-no-decoration'))
+                setDropdown(false);
+        }
+        if (dropdown) {
+            document.querySelector(':not(.languages-container, .languages-button)')
+                .addEventListener('click', closeDropdown)
+        }
+        return () => document.querySelector(':not(.languages-container, .languages-button, .languages-options)').removeEventListener('click', closeDropdown)
+
+    }, [setDropdown, dropdown])
+}
+
+export {useFetchData, useFetchDataById, useHandleClickLanguages, useGetLanguage}
+

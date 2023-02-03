@@ -1,32 +1,38 @@
 @use '../variables/colors' as c;
 
-// Media cards container
+// Content cards container
 
-.media-cards-container {
-  padding: 3em;
+.content-cards-container {
+  padding: 3rem 2rem;
   display: grid;
   grid-template-columns: auto auto auto auto;
-  column-gap: 0.5em;
-  row-gap: 2.5em;
+  column-gap: 1.5rem;
+  row-gap: 2.5rem;
   justify-content: space-evenly;
 }
 
-// Media card
+@media screen and (max-width: 768px) {
+  .content-cards-container {
+    grid-template-columns: auto auto;
+  }
+}
 
-.media-card {
+// Content card
+
+.content-card {
   background-color: transparent;
   width: 133px;
   height: 177.8px;
   perspective: 1000px;
   font-family: sans-serif;
 
-  &:hover .media-card-inner {
+  &:hover .content-card-inner {
     transform: rotateY(180deg);
   }
 
 }
 
-.media-card-title {
+.content-card-title {
   z-index: 2;
   left: 0;
   right: 0;
@@ -36,7 +42,7 @@
   margin: 0;
 }
 
-.media-card-subtitle {
+.content-card-subtitle {
   z-index: 2;
   font-size: 0.9rem;
   padding: 0.5em;
@@ -53,7 +59,7 @@
 }
 
 
-.media-card-inner {
+.content-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
@@ -62,7 +68,7 @@
   transform-style: preserve-3d;
 }
 
-.media-card-front, .media-card-back {
+.content-card-front, .content-card-back {
   box-shadow: 0 8px 14px 0 rgba(0, 0, 0, 0.2);
   position: absolute;
   z-index: 1;
@@ -78,19 +84,19 @@
   overflow: hidden;
 }
 
-.media-card-front {
+.content-card-front {
   background: linear-gradient(120deg, lighten(c.$lightOrange, 10%) 60%, lighten(c.$lightOrange, 30%) 88%,
           c.$lightOrange 40%, c.$orange 48%);
   color: darken(c.$darkBlue, 2%);
 }
 
-.media-card-back {
+.content-card-back {
   background: linear-gradient(120deg, c.$lightOrange 30%, c.$orange 88%,
           lighten(c.$lightOrange, 15%) 40%, lighten(c.$lightOrange, 5%) 78%);
   color: c.$white;
   transform: rotateY(180deg);
 
-  .media-card-image {
+  .content-card-image {
     opacity: 1;
     filter: blur(4px) brightness(50%);
     transform: scaleX(-1);
@@ -98,7 +104,7 @@
   }
 }
 
-.media-card-image {
+.content-card-image {
   width: 100%;
   height: 100%;
   object-fit: cover;

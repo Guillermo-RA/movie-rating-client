@@ -1,9 +1,9 @@
 import {useContext} from "react";
+import {useFetchDataById} from "../../hooks/personalized-hooks";
 import {ApiDataProvider} from "../../context/ApiDataProvider";
-import {useFetchDataById} from "../../hooks/useFetchData";
 import {Link} from "react-router-dom";
 
-const MoviesShow = () => {
+const ContentShow = () => {
     const {tmdbMovieUrl, tmdbApiKey} = useContext(ApiDataProvider)
     const {data: {title}, isFetching} = useFetchDataById(tmdbMovieUrl, tmdbApiKey)
     if (isFetching) {
@@ -19,4 +19,4 @@ const MoviesShow = () => {
     )
 }
 
-export default MoviesShow
+export default ContentShow

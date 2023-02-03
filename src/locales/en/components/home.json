@@ -1,0 +1,17 @@
+{
+  "know-about": {
+    "title": "What is Movie Rating?",
+    "text": "With this application, you will be able to create your own lists with different movies or shows that you've watched and rate them. You will be able to see various graphs showing information about the media you had consumed, the grade you had put them, create automated tweets with the movie or show you watched and your rating on it...",
+    "and-more": "And much more!"
+  },
+  "trending-content": {
+    "title": {
+      "movie": "Trending movies this week",
+      "tv": "Trending shows this week"
+    },
+    "rate-it": "Rate it now!"
+  },
+  "join-now": {
+    "title": "Join now"
+  }
+}
