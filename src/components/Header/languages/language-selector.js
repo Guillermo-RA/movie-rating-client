@@ -2,7 +2,7 @@ import Flag from "react-world-flags";
 import LanguageItem from "./language-item";
 import {useState} from "react";
 import {availableLanguages} from "./available-languages";
-import {useGetLanguage, useHandleClickLanguages} from "../../../hooks/personalized-hooks";
+import {useGetLanguage, useHandleClickLanguages} from "../../../hooks/language-hooks";
 const LanguageSelector = () => {
 
     const [dropdown, setDropdown] = useState(false);

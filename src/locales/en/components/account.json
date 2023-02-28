@@ -1,0 +1,30 @@
+{
+  "placeholder": {
+    "name": "Name",
+    "username": "Username",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "email": "Email",
+    "phone": "Phone number"
+  },
+  "register": {
+    "title": "Sign up",
+    "button": "Sign up"
+  },
+  "login": {
+    "title": "Login",
+    "button": "Login"
+  },
+  "input": {
+    "name": "name",
+    "username": "username",
+    "email": "email",
+    "phone": "phone",
+    "password": "password",
+    "confirm_password": "confirm password"
+  },
+  "links": {
+    "have_account": "Already signed up? Login here",
+    "dont_have_account": "Don't have an account? Create one now!"
+  }
+}

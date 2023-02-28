@@ -1,0 +1,30 @@
+{
+  "placeholder": {
+    "name": "Nombre",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "confirm_password": "Confirme la contraseña",
+    "email": "Email",
+    "phone": "Número de teléfono"
+  },
+  "register": {
+    "title": "Registro",
+    "button": "Registrarse"
+  },
+  "login": {
+    "title": "Inicio de sesión",
+    "button": "Iniciar sesión"
+  },
+  "input": {
+    "name": "nombre",
+    "username": "usuario",
+    "email": "email",
+    "phone": "teléfono",
+    "password": "contraseña",
+    "confirm_password": "confirmar contraseña"
+  },
+  "links": {
+    "have_account": "¿Ya estás registrado? Inicia sesión aquí",
+    "dont_have_account": "¿No tienes cuenta? ¡Registrate ahora!"
+  }
+}

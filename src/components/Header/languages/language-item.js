@@ -1,6 +1,6 @@
 import Flag from "react-world-flags";
 import {useTranslation} from "react-i18next";
-import {languageChanger} from "../../../helpers/language-changer";
+import {languageChanger} from "../../../helpers/language/language-helper";
 
 const LanguageItem = ({language: {name, code, flag}, setDropdown, setFlagCode}) => {
 

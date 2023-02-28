@@ -1,0 +1,41 @@
+@use '../../variables/colors' as c;
+
+.account-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .button {
+    flex-grow: 0;
+  }
+}
+
+.form-inputs-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  row-gap: 1.5em;
+  column-gap: 3.3em;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  width: 100%;
+  max-width: 188px;
+
+}
+
+.error {
+  color: c.$red;
+  margin-top: 0.4rem;
+}

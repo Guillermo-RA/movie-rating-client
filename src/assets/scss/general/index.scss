@@ -1,11 +1,11 @@
 // General CSS
 @use "../variables/colors" as c;
-@use "basic/colors";
 @use 'basic/inputs';
 @use 'basic/widths';
-@use 'basic/fonts';
+@use 'basic/text';
 @use 'basic/padding-margin';
 @use 'basic/visibility';
+@use "basic/colors";
 
 // General Components CSS
 @use 'navbar';

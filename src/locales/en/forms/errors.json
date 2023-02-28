@@ -1,0 +1,19 @@
+{
+  "messages": {
+    "required": "The field '{{field}}' is required",
+    "string": "The field '{{field}}' must be a string",
+    "number": "The field '{{field}}' must be a number",
+    "email": "The field '{{field}}' must be a valid email",
+    "max_string": "The field '{{field}}' must be shorter than {{requirement}} characters",
+    "max_number": "The field '{{field}}' must be lesser than {{requirement}}",
+    "min_string": "The field '{{field}}' must be longer than {{requirement}} characters",
+    "min_number": "The field '{{field}}' must be greater than {{requirement}}",
+    "contains": "The field '{{field}}' must include at least 1 {{requirement}}",
+    "equal_to": "The field '{{field}}' must be equal to the field '{{requirement}}'"
+  },
+  "requirements": {
+    "number": "number",
+    "mixedcase": "uppercase letter and 1 lowercase letter",
+    "symbol": "special character (e.g. @ # $ %)"
+  }
+}

@@ -1,5 +1,5 @@
 import {createContext} from "react";
-const TranslatorProvider = createContext({
+const   TranslatorProvider = createContext({
 
 })
 

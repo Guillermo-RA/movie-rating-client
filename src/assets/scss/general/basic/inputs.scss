@@ -1,38 +1,70 @@
 // Import the various SASS variables
 @use '../../variables/colors' as c;
+@use '../basic/colors' as list;
 
-// CSS to improve visuals of inputs which you type in
+// CSS to improve visuals of inputs which you text in
 
-.input-type {
+.input-text {
   width: 100%;
-  max-width: 220px;
-  height: 45px;
-  padding: 12px;
-  border-radius: 12px;
-  border: 1.5px solid c.$darkBlue;
-  outline: none;
-  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  max-width: 350px;
+  height: 2.2rem;
+  padding: .8rem 0.6rem;
+  border-radius: 0.5rem;
+  border: none;
+  outline: 1.5px solid c.$darkBlue;
+  transition: all 0.17s cubic-bezier(0.19, 1, 0.22, 1);
   box-shadow: 0 0 20px -18px;
-}
+  box-sizing: border-box;
 
-.input-type:hover {
-  border: 2px solid c.$darkBlue;
-  box-shadow: 0 0 20px -17px;
-}
+  &:hover {
+    outline: 1.5px solid c.$darkBlue;
+    box-shadow: 0 0 20px -17px;
+  }
 
-.input-type:active {
-  transform: scale(0.95);
-}
+  &:active {
+    transform: scale(0.95);
+  }
 
-.input-type:focus {
-  border: 2px solid c.$mediumBlue;
+  &:focus {
+    outline: 2px solid c.$mediumBlue;
+  }
+
+  &.invalid {
+    outline: 1.5px solid c.$red;
+
+    &:hover {
+      outline: 2px solid c.$red;
+      box-shadow: 0 0 20px -17px;
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+
+    &:focus {
+      outline: 2px solid c.$red;
+    }
+
+  }
 }
 
 .button {
   background: none;
   border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 0.5rem;
 
   &:hover {
     cursor: pointer;
+  }
+}
+
+@each $name, $color in list.$colorsList {
+  .button-#{$name} {
+    background-color: #{$color};
+    border-color: #{$color};
+
+    &:hover {
+      background-color: lighten($color, 15%);
+    }
   }
 }

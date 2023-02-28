@@ -4,7 +4,7 @@
     "text": "Con esta aplicación podrás crear tus propias listas con distintas películas o series que hayas visto y ponerles nota. Podrás ver distintos gráficos que muestren información sobre el contenido que hayas visto, notas que les hayas puesto, hacer tuits automáticos puntuando el contenido que acabes de ver...",
     "and-more": "¡Y mucho más!"
   },
-  "trending-content": {
+  "trending": {
     "title": {
       "movie": "Películas populares esta semana",
       "tv": "Series populares esta semana"
@@ -12,6 +12,8 @@
     "rate-it": "¡Puntúalo ya!"
   },
   "join-now": {
-    "title": "Únete ya"
+    "title": "Únete ya",
+    "text": "Registrate ahora para poder organizar y compartir todas tus opiniones sobre tus series o películas favoritas",
+    "have_account": "¿Ya estás registrado? Inicia sesión aquí"
   }
 }

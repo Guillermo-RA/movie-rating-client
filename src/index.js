@@ -7,7 +7,7 @@ import {I18nextProvider} from "react-i18next";
 import __ from "i18next";
 
 import './assets/scss/general/index.scss';
-import {languageResources as resources} from "./helpers/language-resources";
+import {languageResources as resources} from "./constants/languages/language-resources";
 
 __.init({
     lng: JSON.parse(localStorage.getItem('language'))?.code || 'es',
@@ -17,19 +17,19 @@ __.init({
         escapeValue: false
     },
     resources,
-});
+}).then(() => {
+    const root = createRoot(document.getElementById('root'));
 
-const root = createRoot(document.getElementById('root'));
-
-root.render(
-    <React.StrictMode>
-        < I18nextProvider i18n={__}>
-            <BrowserRouter>
-                <App/>
-            </BrowserRouter>
-        </I18nextProvider>
-    </React.StrictMode>
-);
+    root.render(
+        <React.StrictMode>
+            < I18nextProvider i18n={__}>
+                <BrowserRouter>
+                    <App/>
+                </BrowserRouter>
+            </I18nextProvider>
+        </React.StrictMode>
+    );
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
