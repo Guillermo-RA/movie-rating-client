@@ -1,3 +1,4 @@
+// TODO mirar bien autocomplete
 const registerFields =
     [
         {
@@ -18,6 +19,7 @@ const registerFields =
             className: 'input-text',
             id: 'username-input',
             placeholder: 'username',
+            autoComplete: 'username',
             "data-rules": [
                 'required',
                 'string',
@@ -41,6 +43,7 @@ const registerFields =
             className: 'input-text',
             id: 'phone-input',
             placeholder: 'phone',
+            autoComplete: 'phone',
             "data-rules": [
                 'required',
                 'string'
@@ -52,6 +55,7 @@ const registerFields =
             className: 'input-text',
             id: 'password-input',
             placeholder: 'password',
+            autoComplete: 'current-password',
             "data-rules": [
                 'required',
                 'min:8',
@@ -66,6 +70,7 @@ const registerFields =
             className: 'input-text',
             id: 'confirm_password-input',
             placeholder: 'confirm_password',
+            autoComplete: 'none',
             "data-rules": [
                 'equal_to:password'
             ]
@@ -79,6 +84,7 @@ const loginFields =
             className: 'input-text',
             id: 'username-input',
             placeholder: 'username',
+            autoComplete: 'username',
             "data-rules": [
                 'required'
             ]
@@ -89,6 +95,7 @@ const loginFields =
             className: 'input-text',
             id: 'password-input',
             placeholder: 'password',
+            autoComplete: 'current-password',
             "data-rules": [
                 'required'
             ]
