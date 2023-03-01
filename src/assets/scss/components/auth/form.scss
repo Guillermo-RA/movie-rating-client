@@ -1,14 +1,19 @@
 @use '../../variables/colors' as c;
-
-.account-form-container {
+.auth-form-container {
   display: flex;
+  width: fit-content;
+  margin-top: 4%;
+  margin-inline: auto;
+  padding: 3em;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border: c.$grey .5px solid;
+  box-shadow: c.$grey 0 0 8px;
+  background-color: darken(c.$white, 1%)
 }
 
 .form-container {
   display: flex;
+  margin: auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;

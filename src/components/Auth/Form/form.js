@@ -32,18 +32,15 @@ const Form = ({fields, __, title, action, color, children, ...props}) => {
         <form action={action} {...props} onSubmit={e => handleSubmit(e, form, url, setErrors)}>
             <div className='form-container mt-2'>
                 <div className='form-inputs-container'>
-                    {fields.map(({placeholder, name, ...field}, index) => {
-                        return (
-                            <div key={index} className='input-container'>
-                                <input name={name}
-                                       onChange={e => handleInput(e, setForm, form, setErrors, errors)}
-                                       placeholder={__(`placeholder.${placeholder}`)} {...field} />
-                                <small id={`${name}-error`} className='error hide' data-input={name}>The field email is
-                                    required</small>
-                            </div>
-                        )
-
-                    })}
+                    {fields.map(({placeholder, name, ...field}, index) => (
+                        <div key={index} className='input-container'>
+                            <input name={name}
+                                   onChange={e => handleInput(e, setForm, form, setErrors, errors)}
+                                   placeholder={__(`placeholder.${placeholder}`)} {...field} />
+                            <small id={`${name}-error`} className='error hide' data-input={name}>The field email is
+                                required</small>
+                        </div>
+                    ))}
                 </div>
                 <div className='button-container text-center mt-2'>
                     <button className={`button button-${color}`} style={{alignSelf: 'center'}} type='submit'

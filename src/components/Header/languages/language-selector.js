@@ -22,9 +22,9 @@ const LanguageSelector = () => {
             </button>
             <div className={`languages-options ${dropdown ? 'show' : 'hide'}`}>
                 <ul className='list-no-decoration'>
-                    {availableLanguages.map((language, index) => {
-                        return <LanguageItem key={index} language={language} setFlagCode={setFlagCode} setDropdown={setDropdown}/>
-                    })}
+                    {availableLanguages.map((language, index) => (
+                        <LanguageItem key={index} language={language} setFlagCode={setFlagCode} setDropdown={setDropdown}/>
+                        ))}
                 </ul>
             </div>
         </div>

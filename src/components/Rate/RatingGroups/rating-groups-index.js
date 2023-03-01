@@ -7,7 +7,7 @@ import {TranslatorProvider} from "../../../context/TranslatorProvider";
 const RatingGroupsIndex = () => {
     const {t: __, i18n} = useContext(TranslatorProvider);
     const {restApiUrl} = useContext(ApiDataProvider);
-    const {data:groups, isFetching} = useFetchData(`${restApiUrl}/rating-groups`, i18n);
+    const {data: groups, isFetching} = useFetchData(`${restApiUrl}/rating-groups`, i18n);
 
     if (isFetching) {
         return <div className='title h2'>{__('loading', {ns: 'global'})}</div>
@@ -18,9 +18,9 @@ const RatingGroupsIndex = () => {
             <h2 className='title'>{__('title')}</h2>
             <div className='rating_groups'>
                 <ul className='list-no-decoration'>
-                    {groups.map(group => {
-                        return <RatingGroupItem key={group.id} group={group}/>
-                    })}
+                    {groups.map(group => (
+                        <RatingGroupItem key={group.id} group={group}/>
+                    ))}
                 </ul>
             </div>
         </>

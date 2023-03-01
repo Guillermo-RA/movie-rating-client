@@ -10,12 +10,12 @@ const Register = () => {
     const {t: __} = useContext(TranslatorProvider)
 
     return (
-        <>
+        <div className='auth-form-container'>
             <span className='h2 title'>{__('register.title')}</span>
             <Form method='POST' title='register' action='/register' fields={registerFields} color='yellow' __={__}>
                 <Link className='link link-blue pt-1 fw-600' to='/login'>{__('links.have_account')}</Link>
             </Form>
-        </>
+        </div>
     )
 }
 

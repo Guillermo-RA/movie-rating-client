@@ -8,9 +8,9 @@ const Navbar = () => {
     return (
         <nav className='navbar'>
             <ul className='navbar-items'>
-                {navbarLinks.map((item, index) => {
-                    return <NavbarLinkItem key={index} item={item}/>
-                })}
+                {navbarLinks.map((item, index) => (
+                    <NavbarLinkItem key={index} item={item}/>
+                ))}
                 <li className='navbar-item language-navbar'><LanguageSelector/></li>
             </ul>
         </nav>
