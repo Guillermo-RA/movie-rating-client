@@ -2,8 +2,9 @@ import {useContext, useEffect, useMemo} from "react";
 import {useSetFormValues, useSetErrors} from "../../../hooks/form-hooks";
 import {handleErrors, handleInput, handleSubmit} from "../../../helpers/forms/form-handlers";
 import {ApiDataProvider} from "../../../context/ApiDataProvider";
+import {Link} from "react-router-dom";
 
-const Form = ({fields, __, title, action, color, children, ...props}) => {
+const Form = ({fields, __, action, button: {buttonText, buttonColor}, link: {href, linkColor, linkText}, children, ...props}) => {
     const {restApiUrl} = useContext(ApiDataProvider);
     const url = restApiUrl + action;
 
@@ -37,17 +38,17 @@ const Form = ({fields, __, title, action, color, children, ...props}) => {
                             <input name={name}
                                    onChange={e => handleInput(e, setForm, form, setErrors, errors)}
                                    placeholder={__(`placeholder.${placeholder}`)} {...field} />
-                            <small id={`${name}-error`} className='error hide' data-input={name}>The field email is
-                                required</small>
+                            <small id={`${name}-error`} className='error hide' data-input={name}></small>
                         </div>
                     ))}
+                    {children}
                 </div>
-                <div className='button-container text-center mt-2'>
-                    <button className={`button button-${color}`} style={{alignSelf: 'center'}} type='submit'
-                            name='register'>{__(`${title}.button`)}
+                <div className='submit-button-container text-center mt-2'>
+                    <button className={`button button-${buttonColor}`} style={{alignSelf: 'center'}} type='submit'
+                            name='register'>{__(`${buttonText}.button`)}
                     </button>
                 </div>
-                {children}
+                {href ? <Link className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link> : ''}
             </div>
         </form>
     )

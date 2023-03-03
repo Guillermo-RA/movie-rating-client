@@ -6,9 +6,9 @@
   margin-inline: auto;
   padding: 3em;
   flex-direction: column;
-  border: c.$grey .5px solid;
+  outline: c.$grey 0.5px solid;
   box-shadow: c.$grey 0 0 8px;
-  background-color: darken(c.$white, 1%)
+  background-color: c.$lightGrey;
 }
 
 .form-container {

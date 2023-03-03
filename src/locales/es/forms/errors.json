@@ -3,7 +3,7 @@
     "required": "El campo \"{{field}}\" es obligatorio",
     "string": "El campo \"{{field}}\" no puede contener números",
     "number": "El campo \"{{field}}\" debe ser numérico",
-    "email": "El campo '{{field}}' debe ser un email válido",
+    "email": "El campo \"{{field}}\" debe ser un email válido",
     "max_string": "El campo \"{{field}}\" debe ser menor a {{requirement}} caracteres",
     "max_number": "El campo \"{{field}}\" debe ser más pequeño que {{requirement}}",
     "min_string": "El campo \"{{field}}\" debe ser mayor a {{requirement}} caracteres",

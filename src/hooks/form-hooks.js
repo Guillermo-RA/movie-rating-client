@@ -7,7 +7,7 @@ const useSetFormValues = (fields) => {
 }
 
 const useSetErrors = (currentErrors) => {
-    const [errors, setErrors] = useState({currentErrors})
+    const [errors, setErrors] = useState({...currentErrors} || {errors: '', messages: '', backend: false})
 
     return {errors, setErrors}
 }

@@ -23,7 +23,7 @@ const registerFields =
             "data-rules": [
                 'required',
                 'string',
-                'max:20'
+                'max:30'
             ]
         },
         {

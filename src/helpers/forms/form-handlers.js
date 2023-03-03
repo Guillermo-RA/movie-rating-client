@@ -3,7 +3,9 @@ import {validateForm} from "./validation-functions";
 
 const handleInput = (e, setForm, form, setErrors, errors) => {
     e.persist()
-    removeSpecificError(e.target.name, setErrors, errors)
+    if (errors) {
+        removeSpecificError(e.target.name, setErrors, errors)
+    }
     setForm({
         ...form, [e.target.name]: {
             value: e.target.value,
@@ -16,29 +18,42 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
 const handleSubmit = (e, fields, action, setErrors) => {
     e.preventDefault()
     const {errors, messages} = validateForm(fields)
-    setErrors({errors, messages})
     if (errors) {
-    } else {
-    }
-    const data = getValuesFromFields(fields)
-    console.log(data)
-    axios.post(action, data).then(
-        ({data}) => console.log(data)
-    )
-        .catch(({response: {data: {errors}}}) => {
-            alertErrors(errors)
-        })
-}
-const handleErrors = ({messages}, __, fields) => {
+        const data = getValuesFromFields(fields)
+        console.log(data)
+        //TODO Mejorar el paso de idioma al back por axios
+        const axiosTest = axios.create({
+            headers: {
+                'Accept-Language': 'es'
+            }
+        });
 
+        axiosTest.post(action, data).then(
+            ({data}) => console.log(data)
+        )
+            .catch(({response: {data: {errors: messages}}}) => {
+                const parsedMessages = parseBackendValidationErrors(messages)
+                console.log(parsedMessages)
+                setErrors({errors: true, messages: parsedMessages, backend: true})
+                alertErrors(errors)
+            })
+    } else {
+        alertErrors(messages)
+        setErrors({errors, messages})
+    }
+}
+const handleErrors = ({errors, messages, backend}, __, fields) => {
     for (const inputName in messages) {
         const input = document.querySelector(`#${inputName}-input`)
         const errorContainer = document.querySelector(`#${inputName}-error`)
 
         if (messages[inputName]) {
-            const errorMessage = createErrorMessage(messages, inputName, fields, __)
-
-            setError(input, errorContainer, errorMessage)
+            if (backend) {
+                setErrorBackend(input, errorContainer, messages[inputName])
+            } else {
+                const errorMessage = createErrorMessage(messages, inputName, fields, __)
+                setError(input, errorContainer, errorMessage)
+            }
         } else {
             removeErrors(input, errorContainer)
         }
@@ -48,7 +63,7 @@ const handleErrors = ({messages}, __, fields) => {
 const alertErrors = (errors) => {
     // TODO Implementar librería de alertas (preguntar a Dani si no lo tengo en marcadores) y añadir los errores
     for (const error of Object.keys(errors)) {
-        console.error(errors[error][0])
+        console.log(error)
     }
 }
 
@@ -61,9 +76,9 @@ const getValuesFromFields = (fields) => {
     }, {});
 }
 
-const removeSpecificError = (name, setErrors, {errors, messages}) => {
+const removeSpecificError = (name, setErrors, {errors, messages, backend}) => {
     document.querySelector(`.error[data-input=${name}]`).classList.add('hide')
-    setErrors({errors, messages: {...messages, [name]: ''}})
+    setErrors({errors, messages: {...messages, [name]: ''}, backend})
 }
 
 const createErrorMessage = (messages, inputName, fields, __) => {
@@ -107,6 +122,14 @@ const setError = (input, errorContainer, errorMessage) => {
     input.classList.add('invalid');
     errorContainer.classList.remove('hide')
 }
+const setErrorBackend = (input, errorContainer, errorMessage) => {
+    errorContainer.textContent = errorMessage;
+
+    input.setAttribute('aria-invalid', 'true')
+    input.setAttribute('aria-describedby', errorContainer.id)
+    input.classList.add('invalid');
+    errorContainer.classList.remove('hide')
+}
 
 const removeErrors = (input, errorContainer) => {
 
@@ -114,6 +137,13 @@ const removeErrors = (input, errorContainer) => {
     input.setAttribute('aria-describedby', '')
     input.classList.remove('invalid');
     errorContainer.classList.add('hide')
+}
+
+const parseBackendValidationErrors = (messages) => {
+    return Object.entries(messages).reduce((parsedMessage, [inputName, errors]) => {
+        parsedMessage[inputName] = errors[0]
+        return parsedMessage
+    }, {})
 }
 
 export {handleInput, handleSubmit, handleErrors}
