@@ -10,8 +10,8 @@ const Login = () => {
 
     return (
         <div className='auth-form-container'>
-            <span className='h2 title'>{__('login.title')}</span>
-            <Form method='POST' button={{buttonText:'login', buttonColor: 'blue'}} link={{linkText: 'links.dont_have_account', href: '/register', linkColor: 'orange'}} action='/login' fields={loginFields} __={__} />
+            <span className='h2 title orange'>{__('login.title')}</span>
+            <Form method='POST' button={{buttonText:'login', buttonColor: 'orange'}} link={{linkText: 'links.dont_have_account', href: '/register', linkColor: 'blue'}} action='/login' fields={loginFields} __={__} />
         </div>
     )
 }

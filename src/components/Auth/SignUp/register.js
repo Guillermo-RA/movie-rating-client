@@ -10,8 +10,8 @@ const Register = () => {
 
     return (
         <div className='auth-form-container'>
-            <span className='h2 title'>{__('register.title')}</span>
-            <Form method='POST' button={{buttonText:'register', buttonColor: 'orange'}} link={{linkText: 'links.have_account', href: '/login', linkColor: 'blue'}} action='/register' fields={registerFields} __={__}/>
+            <span className='h2 title blue'>{__('register.title')}</span>
+            <Form method='POST' button={{buttonText:'register', buttonColor: 'blue'}} link={{linkText: 'links.have_account', href: '/login', linkColor: 'orange'}} action='/register' fields={registerFields} __={__}/>
         </div>
     )
 }

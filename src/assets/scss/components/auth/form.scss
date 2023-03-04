@@ -1,8 +1,9 @@
 @use '../../variables/colors' as c;
+
 .auth-form-container {
   display: flex;
   width: fit-content;
-  margin-top: 4%;
+  margin-top: 8em;
   margin-inline: auto;
   padding: 3em;
   flex-direction: column;
@@ -28,7 +29,14 @@
   grid-template-columns: auto auto;
   justify-content: center;
   row-gap: 1.5em;
-  column-gap: 3.3em;
+  column-gap: 2.2em;
+}
+
+@media screen and (max-width: 992px) {
+  .form-inputs-container {
+    grid-template-columns: auto;
+    column-gap: 0;
+  }
 }
 
 .input-container {

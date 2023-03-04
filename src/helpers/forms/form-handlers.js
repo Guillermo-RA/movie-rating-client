@@ -18,7 +18,7 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
 const handleSubmit = (e, fields, action, setErrors) => {
     e.preventDefault()
     const {errors, messages} = validateForm(fields)
-    if (errors) {
+    if (!errors) {
         const data = getValuesFromFields(fields)
         console.log(data)
         //TODO Mejorar el paso de idioma al back por axios

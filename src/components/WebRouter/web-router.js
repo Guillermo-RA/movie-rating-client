@@ -8,9 +8,9 @@ import ContentIndex from "../Content/content-index";
 import ContentShow from "../Content/content-show";
 import Footer from "../Footer/footer";
 import {TranslatorProvider} from "../../context/TranslatorProvider";
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import ScrollToTop, {useAuth, useTitle} from "../../hooks/middleware-hooks";
+import ScrollToTop, {useTitle} from "../../hooks/middleware-hooks";
 
 const WebRouter = () => {
     const navbar = useTranslation(['navbar', 'global'])
@@ -18,16 +18,16 @@ const WebRouter = () => {
     const ratingGroups = useTranslation(['ratingGroups', 'global'])
     const content = useTranslation(['content', 'global'])
     const account = useTranslation(['account', 'errors', 'global'])
-    useTitle();
+    useTitle()
 
-    const ProtectedRoute = ({children: next}) => {
-        const {isAuthenticated} = useAuth(true);
-        if (!isAuthenticated) {
-            return <Navigate to='/login'/>
-        }
-
-        return next
-    }
+    // const ProtectedRoute = ({children: next}) => {
+    //     const {isAuthenticated} = useAuth(true);
+    //     if (!isAuthenticated) {
+    //         return <Navigate to='/login'/>
+    //     }
+    //
+    //     return next
+    // }
     return (
         <>
             <TranslatorProvider.Provider value={navbar}>
@@ -49,11 +49,9 @@ const WebRouter = () => {
                     }/>
 
                     <Route path='/rating-groups' element={
-                        <ProtectedRoute>
                             <TranslatorProvider.Provider value={ratingGroups}>
                                 <RatingGroupsIndex/>
                             </TranslatorProvider.Provider>
-                        </ProtectedRoute>
                     }/>
                     <Route path='/rating-groups/:id' element={<RatingGroupsShow/>}/>
 

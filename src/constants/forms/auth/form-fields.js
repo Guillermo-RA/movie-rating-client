@@ -7,10 +7,12 @@ const registerFields =
             className: 'input-text',
             id: 'name-input',
             placeholder: 'name',
+            autoComplete: 'name',
             "data-rules": [
                 'required',
                 'string',
                 'max:50',
+                'min:3',
             ]
         },
         {
@@ -23,7 +25,8 @@ const registerFields =
             "data-rules": [
                 'required',
                 'string',
-                'max:30'
+                'max:30',
+                'min:3',
             ]
         },
         {
@@ -32,6 +35,7 @@ const registerFields =
             className: 'input-text',
             id: 'email-input',
             placeholder: 'email',
+            autoComplete: 'email',
             "data-rules": [
                 'required',
                 'email'
@@ -55,7 +59,7 @@ const registerFields =
             className: 'input-text',
             id: 'password-input',
             placeholder: 'password',
-            autoComplete: 'current-password',
+            autoComplete: 'new-password',
             "data-rules": [
                 'required',
                 'min:8',
@@ -70,7 +74,7 @@ const registerFields =
             className: 'input-text',
             id: 'confirm_password-input',
             placeholder: 'confirm_password',
-            autoComplete: 'none',
+            autoComplete: 'off',
             "data-rules": [
                 'equal_to:password'
             ]

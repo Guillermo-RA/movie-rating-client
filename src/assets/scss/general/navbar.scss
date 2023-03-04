@@ -10,20 +10,73 @@
   justify-content: space-between;
   align-items: center;
   padding-inline: 3em;
+}
+
+.app-logo {
+  display: block;
+  position: relative;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.navbar {
+  position: relative;
 
   .navbar-items {
-    padding-inline-start: 0;
-    width: fit-content;
     display: inline-flex;
     justify-content: space-between;
+    padding-inline-start: 0;
+    width: fit-content;
     list-style: none;
 
     .navbar-item:not(.navbar-item:last-of-type) {
       margin-right: 2rem;
     }
   }
-
 }
+
+.hamburger-button {
+  display: none;
+}
+
+@media screen and (max-width: 992px) {
+  .hamburger-button {
+    display: block;
+    position: relative;
+    z-index: 5;
+  }
+  .navbar {
+    display: none;
+
+    &.open {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: absolute;
+      border-radius: 0.3rem;
+      right: 0;
+      top: 90%;
+      width: 200px;
+      max-width: 50%;
+      background-color: c.$darkBlue;
+    }
+
+    .navbar-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .navbar-item {
+        margin-right: 0 !important;
+
+        &:not(&:last-of-type) {
+          margin-bottom: 1em;
+        }
+      }
+    }
+  }
+}
+
 
 .languages-container {
   width: fit-content;
