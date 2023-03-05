@@ -1,10 +1,11 @@
 import {useContext, useEffect, useMemo} from "react";
 import {useSetFormValues, useSetErrors} from "../../../hooks/forms/form-hooks";
-import {handleErrors, handleInput, handleSubmit} from "../../../helpers/forms/form-handlers";
+import {handleInput, handleSubmit} from "../../../helpers/forms/form-handlers";
 import {ApiDataProvider} from "../../../context/ApiDataProvider";
 import {Link} from "react-router-dom";
+import {handleErrors} from "../../../helpers/forms/form-errors-handlers";
 
-const Form = ({fields, __, action, button: {buttonText, buttonColor}, link: {href, linkColor, linkText}, children, ...props}) => {
+const Form = ({fields, __, action, button: {buttonText, buttonColor}, links = [], children, ...props}) => {
     const {restApiUrl} = useContext(ApiDataProvider);
     const url = restApiUrl + action;
 
@@ -30,7 +31,7 @@ const Form = ({fields, __, action, button: {buttonText, buttonColor}, link: {hre
     }, [errors, __, fieldsMemo])
 
     return (
-        <form action={action} {...props} onSubmit={e => handleSubmit(e, form, url, setErrors)}>
+        <form action={action} {...props} onSubmit={e => handleSubmit(e, form, url, setErrors, __)}>
             <div className='form-container mt-2'>
                 <div className='form-inputs-container'>
                     {fields.map(({placeholder, name, ...field}, index) => (
@@ -48,7 +49,10 @@ const Form = ({fields, __, action, button: {buttonText, buttonColor}, link: {hre
                             name='register'>{__(`${buttonText}.button`)}
                     </button>
                 </div>
-                {href ? <Link className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link> : ''}
+                {/*{href ? <Link className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link> : ''}*/}
+                {links.map(({linkText, href, linkColor}, index) => (
+                    <Link key={index} className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link>
+                ))}
             </div>
         </form>
     )

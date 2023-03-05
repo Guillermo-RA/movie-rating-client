@@ -4,10 +4,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 import {I18nextProvider} from "react-i18next";
+import {languageResources as resources} from "./constants/languages/language-resources";
+import {ToastContainer} from "react-toastify";
 import __ from "i18next";
 
 import './assets/scss/general/index.scss';
-import {languageResources as resources} from "./constants/languages/language-resources";
+import 'react-toastify/dist/ReactToastify.css';
 
 __.init({
     lng: JSON.parse(localStorage.getItem('language'))?.code || 'es',
@@ -22,6 +24,7 @@ __.init({
 
     root.render(
         <React.StrictMode>
+            <ToastContainer/>
             < I18nextProvider i18n={__}>
                 <BrowserRouter>
                     <App/>

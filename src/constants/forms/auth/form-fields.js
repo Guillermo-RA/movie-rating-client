@@ -27,7 +27,8 @@ const registerFields =
                 'username',
                 'max:30',
                 'min:3',
-            ]
+            ],
+            value: 'guillefive01'
         },
         {
             type: 'text',
@@ -39,7 +40,8 @@ const registerFields =
             "data-rules": [
                 'required',
                 'email'
-            ]
+            ],
+            value: 'guillefive011@gmail.com'
         },
         {
             type: 'text',
@@ -51,7 +53,8 @@ const registerFields =
             "data-rules": [
                 'required',
                 'string'
-            ]
+            ],
+            value: '667263459'
         },
         {
             type: 'password',
@@ -66,7 +69,8 @@ const registerFields =
                 'contains:number',
                 'contains:mixedcase',
                 'contains:symbol'
-            ]
+            ],
+            value: 'Willy2001@'
         },
         {
             type: 'password',
@@ -77,7 +81,8 @@ const registerFields =
             autoComplete: 'off',
             "data-rules": [
                 'equal_to:password'
-            ]
+            ],
+            value: 'Willy2001@'
         },
     ]
 const loginFields =

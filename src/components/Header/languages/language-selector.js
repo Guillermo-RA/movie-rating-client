@@ -3,7 +3,7 @@ import LanguageItem from "./language-item";
 import {useState} from "react";
 import {availableLanguages} from "./available-languages";
 import {useGetLanguage, useHandleClickLanguages} from "../../../hooks/navbar/navbar-hooks";
-const LanguageSelector = () => {
+const LanguageSelector = ({setHamburgerOpen}) => {
 
     const [dropdown, setDropdown] = useState(false);
     const {flag} = useGetLanguage();
@@ -23,7 +23,7 @@ const LanguageSelector = () => {
             <div className={`languages-options ${dropdown ? 'show' : 'hide'}`}>
                 <ul className='list-no-decoration'>
                     {availableLanguages.map((language, index) => (
-                        <LanguageItem key={index} language={language} setFlagCode={setFlagCode} setDropdown={setDropdown}/>
+                        <LanguageItem key={index} language={language} setFlagCode={setFlagCode} setDropdown={setDropdown} setHamburgerOpen={setHamburgerOpen}/>
                         ))}
                 </ul>
             </div>

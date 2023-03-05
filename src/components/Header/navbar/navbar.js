@@ -14,9 +14,9 @@ const Navbar = () => {
             <nav className={`navbar${hamburgerOpen ? ' open' : ''}`}>
                 <ul className='navbar-items'>
                     {navbarLinks.map((item, index) => (
-                        <NavbarLinkItem key={index} item={item}/>
+                        <NavbarLinkItem key={index} item={item} setHamburgerOpen={setHamburgerOpen}/>
                     ))}
-                    <li className='navbar-item language-navbar'><LanguageSelector/></li>
+                    <li className='navbar-item language-navbar'><LanguageSelector setHamburgerOpen={setHamburgerOpen}/></li>
                 </ul>
             </nav>
         </>
