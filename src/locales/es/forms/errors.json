@@ -1,15 +1,16 @@
 {
   "messages": {
-    "required": "El campo \"{{field}}\" es obligatorio",
-    "string": "El campo \"{{field}}\" no puede contener números",
-    "number": "El campo \"{{field}}\" debe ser numérico",
-    "email": "El campo \"{{field}}\" debe ser un email válido",
-    "max_string": "El campo \"{{field}}\" debe ser menor a {{requirement}} caracteres",
-    "max_number": "El campo \"{{field}}\" debe ser más pequeño que {{requirement}}",
-    "min_string": "El campo \"{{field}}\" debe ser mayor a {{requirement}} caracteres",
-    "min_number": "El campo \"{{field}}\" debe ser más grande que {{requirement}}",
-    "contains": "El campo \"{{field}}\" debe de contener al menos 1 {{requirement}}",
-    "equal_to": "El campo \"{{field}}\" debe ser igual al campo \"{{requirement}}\""
+    "required": "El campo {{field}} es obligatorio",
+    "string": "El campo {{field}} no puede contener números o símbolos",
+    "number": "El campo {{field}} debe ser numérico",
+    "username": "El campo {{field}} debe de contener solo letras y números, sin espacios",
+    "email": "El campo {{field}} debe ser un email válido",
+    "max_string": "El campo {{field}} debe ser menor a {{requirement}} caracteres",
+    "max_number": "El campo {{field}} debe ser menor que {{requirement}}",
+    "min_string": "El campo {{field}} debe ser mayor a {{requirement}} caracteres",
+    "min_number": "El campo {{field}} debe ser mayor que {{requirement}}",
+    "contains": "El campo {{field}} debe de contener al menos 1 {{requirement}}",
+    "equal_to": "El campo {{field}} debe ser igual al campo {{requirement}}"
   },
   "requirements": {
     "number": "número",

@@ -10,35 +10,44 @@ const useGetLanguage = () => {
 const useHandleClickLanguages = (setDropdown, dropdown) => {
     useEffect(() => {
         const closeDropdown = (e) => {
-            const target = e.target.classList;
+            const languagesContainer = document.querySelector('.languages-container')
 
-            if (!target.contains('languages-options') && !target.contains('list-no-decoration'))
+            if (!languagesContainer.contains(e.target)) {
                 setDropdown(false);
+            }
         }
         if (dropdown) {
-            document.querySelector(':not(.languages-container):not(.languages-button)')
-                .addEventListener('click', closeDropdown)
+            document.addEventListener('mousedown', closeDropdown)
+            document.addEventListener('touchstart', closeDropdown)
         }
-        return () => document.querySelector(':not(.languages-container, .languages-button, .languages-options)').removeEventListener('click', closeDropdown)
+        return () => {
+            document.removeEventListener('mousedown', closeDropdown)
+            document.removeEventListener('touchstart', closeDropdown)
+        }
 
     }, [setDropdown, dropdown])
 }
 
-const useHandleMenuClick = ({setHamburgerOpen, hamburgerOpen}) => {
+const useHandleClickMenu = ({setHamburgerOpen, hamburgerOpen}) => {
     useEffect(() => {
         const closeMenu = (e) => {
-            const targetClass = e.target.classList
-            if ((e.target.nodeName !== 'svg' && e.target.nodeName !== 'line' && !targetClass.contains('navbar') && !targetClass.contains('navbar-items') ))
+            const navbar = document.querySelector('.navbar')
+            const hamburger = document.querySelector('.hamburger-menu-container')
+
+            if (!navbar.contains(e.target) && !hamburger.contains(e.target)) {
                 setHamburgerOpen(false)
+            }
         }
         if (hamburgerOpen) {
-            document.querySelectorAll(':not(.hamburger-button):not(.navbar):not(.navbar-items)').forEach(element => {
-                element.addEventListener('click', closeMenu)
-            })
+            document.addEventListener('mousedown', closeMenu)
+            document.addEventListener('touchstart', closeMenu)
         }
 
-        return () => document.querySelector(':not(.hamburger-button):not(.navbar):not(.navbar-items)').removeEventListener('click', closeMenu)
+        return () => {
+            document.removeEventListener('mousedown', closeMenu)
+            document.removeEventListener('touchstart', closeMenu)
+        }
     }, [setHamburgerOpen, hamburgerOpen])
 }
 
-export {useGetLanguage, useHandleClickLanguages, useHandleMenuClick}
+export {useGetLanguage, useHandleClickLanguages, useHandleClickMenu}

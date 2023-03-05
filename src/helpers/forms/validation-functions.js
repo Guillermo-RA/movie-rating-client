@@ -46,12 +46,14 @@ const validateRequired = ({value, type}) => {
 }
 
 const validateString = ({value}) => {
-    return !/^[a-zA-Z0-9_]+$/.test(value);
+    return !/^[a-zA-Z0-9_ ]+$/.test(value);
 }
 const validateNumber = (value) => {
     return !/^[0-9]+(\.[0-9]+)?$/.test(value)
 }
-
+const validateUsername = ({value}) => {
+    return !/^[a-zA-Z0-9]+$/.test(value)
+}
 const validateEmail = ({value}) => {
     return !/^[a-zA-Z][a-zA-Z0-9._-]*@[a-zA-Z0-9]+([.-][a-zA-Z0-9]+)*\.[a-zA-Z]{2,}$/.test(value)
 }
@@ -122,6 +124,7 @@ const validationRules = {
     string: validateString,
     number: validateNumber,
     email: validateEmail,
+    username: validateUsername,
     min: validateMin,
     max: validateMax,
     contains: validateContains,

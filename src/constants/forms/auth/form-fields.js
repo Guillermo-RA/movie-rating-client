@@ -24,7 +24,7 @@ const registerFields =
             autoComplete: 'username',
             "data-rules": [
                 'required',
-                'string',
+                'username',
                 'max:30',
                 'min:3',
             ]

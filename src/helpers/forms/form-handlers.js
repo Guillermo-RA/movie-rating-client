@@ -1,5 +1,6 @@
 import axios from "axios";
 import {validateForm} from "./validation-functions";
+import {toast, ToastContainer} from "react-toastify";
 
 const handleInput = (e, setForm, form, setErrors, errors) => {
     e.persist()
@@ -18,22 +19,35 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
 const handleSubmit = (e, fields, action, setErrors) => {
     e.preventDefault()
     const {errors, messages} = validateForm(fields)
-    if (!errors) {
+    if (errors) {
         const data = getValuesFromFields(fields)
-        console.log(data)
         //TODO Mejorar el paso de idioma al back por axios
-        const axiosTest = axios.create({
+        const axiosLanguage = axios.create({
             headers: {
                 'Accept-Language': 'es'
             }
         });
 
-        axiosTest.post(action, data).then(
-            ({data}) => console.log(data)
+        axiosLanguage.post(action, data).then(
+            ({data}) => {
+                console.log(data)
+                toast.success('Success')
+            }
         )
             .catch(({response: {data: {errors: messages}}}) => {
+                console.log('aqui')
+                toast.error('Error', {
+                    position: "top-right",
+                    autoClose: 3500,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                <ToastContainer/>
                 const parsedMessages = parseBackendValidationErrors(messages)
-                console.log(parsedMessages)
                 setErrors({errors: true, messages: parsedMessages, backend: true})
                 alertErrors(errors)
             })
