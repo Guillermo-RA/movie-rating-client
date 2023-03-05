@@ -1,7 +1,7 @@
 import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 
-import {routesTitles} from "../constants/routes/routes-titles";
+import {routesTitles} from "../../constants/routes/routes-titles";
 
 const useTitle = () => {
     const location = useLocation();

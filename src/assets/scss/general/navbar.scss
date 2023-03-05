@@ -40,6 +40,9 @@
 }
 
 @media screen and (max-width: 992px) {
+  .hamburger-menu-container {
+    width: fit-content;
+  }
   .hamburger-button {
     display: block;
     position: relative;
@@ -53,7 +56,7 @@
       flex-direction: column;
       align-items: center;
       position: absolute;
-      border-radius: 0.3rem;
+      border-radius: 0.4rem;
       right: 0;
       top: 90%;
       width: 200px;

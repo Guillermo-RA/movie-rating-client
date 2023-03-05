@@ -8,7 +8,7 @@ const languageChanger = (name, code, flag, setDropdown, setFlagCode, i18n) => {
                 setFlagCode(flag)
                 axios(`${process.env.REACT_APP_REST_API_URL}/change-language/${code}`)
             });
-    setDropdown(prev => !prev)
+    setDropdown(false)
 // TODO Realizar una llamada al back para cambiar el idioma
 }
 

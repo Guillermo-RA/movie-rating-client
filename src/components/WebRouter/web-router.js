@@ -10,7 +10,7 @@ import Footer from "../Footer/footer";
 import {TranslatorProvider} from "../../context/TranslatorProvider";
 import {Route, Routes} from "react-router-dom";
 import {useTranslation} from "react-i18next";
-import ScrollToTop, {useTitle} from "../../hooks/middleware-hooks";
+import ScrollToTop, {useTitle} from "../../hooks/middleware/middleware-hooks";
 
 const WebRouter = () => {
     const navbar = useTranslation(['navbar', 'global'])
