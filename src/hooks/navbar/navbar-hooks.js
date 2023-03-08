@@ -32,8 +32,7 @@ const useHandleClickMenu = ({setHamburgerOpen, hamburgerOpen}) => {
     useEffect(() => {
         const closeMenu = (e) => {
             const navbar = document.querySelector('.navbar')
-            const hamburger = document.querySelector('.hamburger-menu-container')
-
+            const hamburger = document.querySelector('.hamburger-container')
             if (!navbar.contains(e.target) && !hamburger.contains(e.target)) {
                 setHamburgerOpen(false)
             }
