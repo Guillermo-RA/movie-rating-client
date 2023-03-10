@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "http://movie-rating-client.test:3000/static/css/main.4a889f63.css",
-    "main.js": "http://movie-rating-client.test:3000/static/js/main.47c77e58.js",
-    "static/js/787.f581e3e4.chunk.js": "http://movie-rating-client.test:3000/static/js/787.f581e3e4.chunk.js",
-    "index.html": "http://movie-rating-client.test:3000/index.html",
-    "main.4a889f63.css.map": "http://movie-rating-client.test:3000/static/css/main.4a889f63.css.map",
-    "main.47c77e58.js.map": "http://movie-rating-client.test:3000/static/js/main.47c77e58.js.map",
-    "787.f581e3e4.chunk.js.map": "http://movie-rating-client.test:3000/static/js/787.f581e3e4.chunk.js.map"
+    "main.css": "/movie-rating-client/static/css/main.4a889f63.css",
+    "main.js": "/movie-rating-client/static/js/main.473c7036.js",
+    "static/js/787.f581e3e4.chunk.js": "/movie-rating-client/static/js/787.f581e3e4.chunk.js",
+    "index.html": "/movie-rating-client/index.html",
+    "main.4a889f63.css.map": "/movie-rating-client/static/css/main.4a889f63.css.map",
+    "main.473c7036.js.map": "/movie-rating-client/static/js/main.473c7036.js.map",
+    "787.f581e3e4.chunk.js.map": "/movie-rating-client/static/js/787.f581e3e4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4a889f63.css",
-    "static/js/main.47c77e58.js"
+    "static/js/main.473c7036.js"
   ]
 }
