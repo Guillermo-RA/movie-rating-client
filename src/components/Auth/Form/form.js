@@ -5,7 +5,7 @@ import {ApiDataProvider} from "../../../context/ApiDataProvider";
 import {Link} from "react-router-dom";
 import {handleErrors} from "../../../helpers/forms/form-errors-handlers";
 
-const Form = ({fields, __, action, button: {buttonText, buttonColor}, links = [], children, ...props}) => {
+const Form = ({fields, __, action, method, button: {buttonText, buttonColor}, links = [], children, ...props}) => {
     const {restApiUrl} = useContext(ApiDataProvider);
     const url = restApiUrl + action;
 
@@ -31,9 +31,9 @@ const Form = ({fields, __, action, button: {buttonText, buttonColor}, links = []
     }, [errors, __, fieldsMemo])
 
     return (
-        <form action={action} {...props} onSubmit={e => handleSubmit(e, form, url, setErrors, __)}>
+        <form action={action} method={method} {...props} onSubmit={e => handleSubmit({e, fields: form, action: url, method, setErrors, __})}>
             <div className='form-container mt-2'>
-                <div className='form-inputs-container'>
+                <div className={`form-inputs-container${fields.length < 2 ? ' single' : ''}`}>
                     {fields.map(({placeholder, name, ...field}, index) => (
                         <div key={index} className='input-container'>
                             <input name={name}
@@ -49,7 +49,6 @@ const Form = ({fields, __, action, button: {buttonText, buttonColor}, links = []
                             name='register'>{__(`${buttonText}.button`)}
                     </button>
                 </div>
-                {/*{href ? <Link className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link> : ''}*/}
                 {links.map(({linkText, href, linkColor}, index) => (
                     <Link key={index} className={`link link-${linkColor} pt-1 fw-600`} to={href}>{__(linkText)}</Link>
                 ))}

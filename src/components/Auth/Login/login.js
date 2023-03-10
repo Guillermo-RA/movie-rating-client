@@ -16,7 +16,7 @@ const Login = () => {
         {
             linkText: 'links.forgot_password',
             href: '/forgot-password',
-            linkColor: 'blue'
+            linkColor: 'orange'
         }
     ]
     return (

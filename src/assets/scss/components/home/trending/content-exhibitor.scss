@@ -17,6 +17,12 @@
   }
 }
 
+@media screen and (max-width: 330px) {
+  .content-cards-container {
+    grid-template-columns: auto;
+  }
+}
+
 // Content card
 
 .content-card {

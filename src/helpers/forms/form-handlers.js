@@ -19,12 +19,11 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
     });
 }
 
-const handleSubmit = (e, fields, action, setErrors, __) => {
-    // TODO Añadir los errores de servidor para que salga un mensaje también
+const handleSubmit = ({e, fields, action, method, setErrors, __}) => {
     e.preventDefault()
     const {errors, messages} = validateForm(fields)
 
-    if (errors) {
+    if (!errors) {
         const data = getValuesFromFields(fields)
         const language = getLanguage()
         const axiosLang = axios.create({
@@ -35,24 +34,8 @@ const handleSubmit = (e, fields, action, setErrors, __) => {
         const toastLoading = createToastifyLoading({
             text: __('requestMessages.loading')
         })
-        toggleUninteractablePage()
-        axiosLang.post(action, data).then(
-            ({data}) => {
-                console.log(data)
-                updateToastify({
-                    initialToast: toastLoading,
-                    type: 'success',
-                    text: __('requestMessages.register.success', {})
-                })
-            }
-        ).catch(({response: {data: {errors: messages}}}) => {
-            updateToastify({initialToast: toastLoading, type: 'error', text: __('requestMessages.register.error')})
-            const parsedMessages = parseBackendValidationErrors(messages)
-            setErrors({errors: true, messages: parsedMessages, backend: true})
 
-        }).finally(() => {
-            toggleUninteractablePage()
-        })
+        makeRequest({data, axiosLang, toastLoading, action, method, __})
     } else {
         setErrors({errors, messages})
     }
@@ -66,6 +49,34 @@ const getValuesFromFields = (fields) => {
 
         return fieldValues;
     }, {});
+}
+
+const makeRequest = ({data, axiosLang, toastLoading, action, method, setErrors, __}) => {
+    toggleUninteractablePage()
+    let axiosRequest;
+    if (method.toLowerCase() !== 'get') {
+        axiosRequest = axiosLang[method.toLowerCase()](action, data)
+    } else {
+        axiosRequest = axiosLang.get(action, {params: {...data}})
+    }
+
+    axiosRequest.then(
+        ({data}) => {
+            console.log(data)
+            updateToastify({
+                initialToast: toastLoading,
+                type: 'success',
+                text: __('requestMessages.register.success', {})
+            })
+        }
+    ).catch(({response: {data: {errors: messages}}}) => {
+        updateToastify({initialToast: toastLoading, type: 'error', text: __('requestMessages.register.error')})
+        const parsedMessages = parseBackendValidationErrors(messages)
+        setErrors({errors: true, messages: parsedMessages, backend: true})
+
+    }).finally(() => {
+        toggleUninteractablePage()
+    })
 }
 
 
