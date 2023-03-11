@@ -120,4 +120,33 @@ const forgotPasswordFields = [
         ]
     }
 ]
-export {registerFields, loginFields, forgotPasswordFields}
+
+const resetPasswordFields = [
+    {
+        type: 'password',
+        name: 'password',
+        className: 'input-text',
+        id: 'password-input',
+        placeholder: 'password',
+        autoComplete: 'new-password',
+        "data-rules": [
+            'required',
+            'min:8',
+            'contains:number',
+            'contains:mixedcase',
+            'contains:symbol'
+        ]
+    },
+    {
+        type: 'password',
+        name: 'confirm_password',
+        className: 'input-text',
+        id: 'confirm_password-input',
+        placeholder: 'confirm_password',
+        autoComplete: 'off',
+        "data-rules": [
+            'equal_to:password'
+        ]
+    }
+]
+export {registerFields, loginFields, forgotPasswordFields, resetPasswordFields}

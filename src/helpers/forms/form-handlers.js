@@ -22,9 +22,8 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
 const handleSubmit = ({e, fields, action, method, setErrors, __}) => {
     e.preventDefault()
     const {errors, messages} = validateForm(fields)
-
     if (!errors) {
-        const data = getValuesFromFields(fields)
+        const data = {...getValuesFromFields(fields), homePage: window.location.origin}
         const language = getLanguage()
         const axiosLang = axios.create({
             headers: {
@@ -32,10 +31,10 @@ const handleSubmit = ({e, fields, action, method, setErrors, __}) => {
             }
         });
         const toastLoading = createToastifyLoading({
-            text: __('requestMessages.loading')
+            text: __('request_messages.loading')
         })
 
-        makeRequest({data, axiosLang, toastLoading, action, method, __})
+        makeRequest({data, axiosLang, toastLoading, action, method, setErrors, __})
     } else {
         setErrors({errors, messages})
     }
@@ -61,16 +60,15 @@ const makeRequest = ({data, axiosLang, toastLoading, action, method, setErrors, 
     }
 
     axiosRequest.then(
-        ({data}) => {
-            console.log(data)
+        ({data: {action, email = ''}}) => {
             updateToastify({
                 initialToast: toastLoading,
                 type: 'success',
-                text: __('requestMessages.register.success', {})
+                text: __(`request_messages.${action}.success`, {email: email})
             })
         }
     ).catch(({response: {data: {errors: messages}}}) => {
-        updateToastify({initialToast: toastLoading, type: 'error', text: __('requestMessages.register.error')})
+        updateToastify({initialToast: toastLoading, type: 'error', text: __('request_messages.register.error')})
         const parsedMessages = parseBackendValidationErrors(messages)
         setErrors({errors: true, messages: parsedMessages, backend: true})
 

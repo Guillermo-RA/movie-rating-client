@@ -73,10 +73,10 @@ const setErrorBackend = (input, errorContainer, errorMessage) => {
 
 const removeErrors = (input, errorContainer) => {
 
-    input.setAttribute('aria-invalid', 'false')
-    input.setAttribute('aria-describedby', '')
-    input.classList.remove('invalid');
-    errorContainer.classList.add('hide')
+    input?.setAttribute('aria-invalid', 'false')
+    input?.setAttribute('aria-describedby', '')
+    input?.classList.remove('invalid');
+    errorContainer?.classList.add('hide')
 }
 
 const parseBackendValidationErrors = (messages) => {

@@ -11,6 +11,16 @@ const Form = ({fields, __, action, method, button: {buttonText, buttonColor}, li
 
     const fieldsMemo = useMemo(() => {
         const fieldsInit = {}
+        let additionalFields = {}
+        if (children) {
+            additionalFields = Object.keys(children).reduce((childInputs, key) => {
+                if (children[key].type === 'input') {
+                    const childName = children[key].props.name
+                    childInputs[childName] = children[key].props
+                }
+                return childInputs;
+            }, {})
+        }
         fields.forEach(({name, value, "data-rules": rules, type}) => {
             fieldsInit[name] = {
                 value: value || '',
@@ -18,8 +28,8 @@ const Form = ({fields, __, action, method, button: {buttonText, buttonColor}, li
                 type
             };
         })
-        return fieldsInit
-    }, [fields])
+        return {...fieldsInit, ...additionalFields}
+    }, [fields, children])
 
     const {form, setForm} = useSetFormValues({...fieldsMemo})
     const {errors, setErrors} = useSetErrors({})
@@ -31,7 +41,8 @@ const Form = ({fields, __, action, method, button: {buttonText, buttonColor}, li
     }, [errors, __, fieldsMemo])
 
     return (
-        <form action={action} method={method} {...props} onSubmit={e => handleSubmit({e, fields: form, action: url, method, setErrors, __})}>
+        <form action={action} method={method} {...props}
+              onSubmit={e => handleSubmit({e, fields: form, action: url, method, setErrors, __})}>
             <div className='form-container mt-2'>
                 <div className={`form-inputs-container${fields.length < 2 ? ' single' : ''}`}>
                     {fields.map(({placeholder, name, ...field}, index) => (

@@ -12,6 +12,7 @@ import {Route, Routes} from "react-router-dom";
 import {useTranslation} from "react-i18next";
 import ScrollToTop, {useTitle} from "../../hooks/middleware/middleware-hooks";
 import ForgotPassword from "../Auth/ForgotPassword/forgot-password";
+import ResetPassword from "../Auth/ForgotPassword/reset-password";
 
 const WebRouter = () => {
     const navbar = useTranslation(['navbar', 'global'])
@@ -52,6 +53,12 @@ const WebRouter = () => {
                     <Route path='/forgot-password' element={
                         <TranslatorProvider.Provider value={account}>
                             <ForgotPassword/>
+                        </TranslatorProvider.Provider>
+                    }/>
+
+                    <Route path='/reset-password/:email/:token' element={
+                        <TranslatorProvider.Provider value={account}>
+                            <ResetPassword/>
                         </TranslatorProvider.Provider>
                     }/>
 
