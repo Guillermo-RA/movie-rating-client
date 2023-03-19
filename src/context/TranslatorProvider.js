@@ -1,6 +1,6 @@
-import {createContext} from "react";
-const   TranslatorProvider = createContext({
+import { createContext } from 'react'
+const TranslatorProvider = createContext({
 
 })
 
-export {TranslatorProvider}
+export { TranslatorProvider }

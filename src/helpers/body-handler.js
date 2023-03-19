@@ -1,5 +1,5 @@
 const toggleUninteractablePage = () => {
-    document.querySelector('body').classList.toggle('uninteract')
+  document.querySelector('body').classList.toggle('uninteract')
 }
 
-export {toggleUninteractablePage}
+export { toggleUninteractablePage }

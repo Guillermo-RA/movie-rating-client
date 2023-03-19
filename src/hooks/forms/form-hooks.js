@@ -1,16 +1,16 @@
-import {useState} from "react";
+import { useState } from 'react'
 
 const useSetFormValues = (fields) => {
-    const [form, setForm] = useState({...fields})
+  const [form, setForm] = useState({ ...fields })
 
-    return {form, setForm}
+  return { form, setForm }
 }
 
 const useSetErrors = (currentErrors) => {
-    const [errors, setErrors] = useState({...currentErrors} || {errors: '', messages: '', backend: false})
+  const [errors, setErrors] = useState({ ...currentErrors } || { errors: '', messages: '', backend: false })
 
-    return {errors, setErrors}
+  return { errors, setErrors }
 }
 
 
-export {useSetFormValues, useSetErrors}
+export { useSetFormValues, useSetErrors }
