@@ -37,7 +37,6 @@ const useFetchDataById = (url, apiKey) => {
     axios
         .get(`${url}/${id}`, { params: { api_key: apiKey } })
         .then(({ data }) => {
-          console.log(data)
           if (apiKey) setData(data)
           else setData(data.data)
         })

@@ -15,7 +15,7 @@ const TrendingContent = ({ colorTitle, mediaType, title, translator: { t: __, i1
     <div className={`trending-${title}`}>
       <span className={`h2 ${colorTitle || 'blue'}`}>{__(`trending.title.${mediaType}`)}</span>
       <div className='content-cards-container'>
-        <ContentExhibitor media={results.slice(0, 8)} __={__}/>
+        <ContentExhibitor content={ mediaType } media={results.slice(0, 8)} __={__}/>
       </div>
     </div>
   )

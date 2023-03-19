@@ -88,7 +88,7 @@ const WebRouter = () => {
             path="/content"
             element={
               <TranslatorProvider.Provider value={content}>
-                <ContentIndex content />
+                <ContentIndex />
               </TranslatorProvider.Provider>
             }
           />
@@ -96,7 +96,7 @@ const WebRouter = () => {
             path="/content/:content/:id"
             element={
               <TranslatorProvider.Provider value={content}>
-                <ContentShow content />
+                <ContentShow />
               </TranslatorProvider.Provider>
             }
           />
