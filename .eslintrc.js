@@ -12,7 +12,7 @@ module.exports = {
   plugins: ['react'],
   rules: {
     'object-curly-spacing': ['error', 'always'],
-    'max-len': ['error', { code: 150 }],
+    'max-len': ['error', { code: 200 }],
     'semi': ['error', 'never'],
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',

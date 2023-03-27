@@ -4,6 +4,9 @@ import { toggleUninteractablePage } from '../body-handler'
 import { parseBackendValidationErrors, removeSpecificError } from './form-errors-handlers'
 import { createToastifyLoading, updateToastify } from '../toastify/toastify-helpers'
 import { getLanguage } from '../language/language-helper'
+import { executeCallback } from './callbacks'
+
+const unprocessable = 422
 
 const handleInput = (e, setForm, form, setErrors, errors) => {
   e.persist()
@@ -19,7 +22,7 @@ const handleInput = (e, setForm, form, setErrors, errors) => {
   })
 }
 
-const handleSubmit = ({ e, fields, action, method, setErrors, __ }) => {
+const handleSubmit = ({ e, fields, action, method, setErrors, navigate, __ }) => {
   e.preventDefault()
   const { errors, messages } = validateForm(fields)
   if (!errors) {
@@ -34,7 +37,7 @@ const handleSubmit = ({ e, fields, action, method, setErrors, __ }) => {
       text: __('request_messages.loading'),
     })
 
-    makeRequest({ data, axiosLang, toastLoading, action, method, setErrors, __ })
+    makeRequest({ data, axiosLang, toastLoading, action, method, setErrors, navigate, __ })
   } else {
     setErrors({ errors, messages })
   }
@@ -49,7 +52,7 @@ const getValuesFromFields = (fields) => {
   }, {})
 }
 
-const makeRequest = ({ data, axiosLang, toastLoading, action, method, setErrors, __ }) => {
+const makeRequest = ({ data, axiosLang, toastLoading, action, method, setErrors, navigate, __ }) => {
   toggleUninteractablePage()
   let axiosRequest
   if (method.toLowerCase() !== 'get') {
@@ -65,15 +68,22 @@ const makeRequest = ({ data, axiosLang, toastLoading, action, method, setErrors,
           type: 'success',
           text: __(`request_messages.${action}.success`, { email: email }),
         })
+        executeCallback[action]({ navigate })
       },
-  ).catch(({ response: { data: { errors: messages } } }) => {
-    updateToastify({ initialToast: toastLoading, type: 'error', text: __('request_messages.register.error') })
-    const parsedMessages = parseBackendValidationErrors(messages)
-    setErrors({ errors: true, messages: parsedMessages, backend: true })
-  }).finally(() => {
-    toggleUninteractablePage()
-  })
+  )
+      .catch(({ response, response: { data: { error: messages }, status } }) => {
+        if (status === unprocessable) {
+          updateToastify({ initialToast: toastLoading, type: 'error', text: __('request_messages.register.error') })
+          const parsedMessages = parseBackendValidationErrors(messages)
+          setErrors({ errors: true, messages: parsedMessages, backend: true })
+        } else throw response
+      })
+      .catch(({ data: { message } }) => {
+        console.log(message)
+      })
+      .finally(() => {
+        toggleUninteractablePage()
+      })
 }
-
 
 export { handleInput, handleSubmit }

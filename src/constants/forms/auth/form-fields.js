@@ -83,11 +83,11 @@ const loginFields =
     [
       {
         'type': 'text',
-        'name': 'username',
+        'name': 'email',
         'className': 'input-text',
-        'id': 'username-input',
-        'placeholder': 'username',
-        'autoComplete': 'username',
+        'id': 'email-input',
+        'placeholder': 'email',
+        'autoComplete': 'email',
         'data-rules': [
           'required',
         ],
